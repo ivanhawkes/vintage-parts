@@ -33,3 +33,10 @@ go run main.go
 You can test the API in the browser directly at the [default address](http://localhost:8080) e.g.
 
 [List Manufacturers](http://localhost:8080/manufacturers)
+
+Starting the Vite server:
+
+```bash
+npm run dev
+```
+
