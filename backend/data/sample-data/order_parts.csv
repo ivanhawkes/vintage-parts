@@ -1,0 +1,2 @@
+﻿"order_part_id","order_id","part_id","quantity","unit_price","supplier_part_number","manufacturer_part_number","manufacturer_name","description"
+1,1,1,10,5.5,"NE555P","NE55P","Texas Instruments","A description, but of what?"

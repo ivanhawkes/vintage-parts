@@ -1,0 +1,177 @@
+<database database-name="VintageParts">
+  <table table-name="manufacturers" friendly-table-name="manufacturers" camel-case-name="manufacturers" pascal-case-name="Manufacturers" singular-camel-case-name="manufacturer" singular-pascal-case-name="Manufacturer">
+    <column column-name="manufacturer_id" camel-case-name="manufacturerId" pascal-case-name="ManufacturerId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="manufacturer_name" camel-case-name="manufacturerName" pascal-case-name="ManufacturerName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="description" camel-case-name="description" pascal-case-name="Description" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="manufacturer_url" camel-case-name="manufacturerUrl" pascal-case-name="ManufacturerUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="aliases" camel-case-name="aliases" pascal-case-name="Aliases" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__manufact__163F69B0D1064F51" unique="true" primary-key="true">
+      <index-column index-column-name="manufacturer_id" />
+    </index>
+  </table>
+  <table table-name="order_parts" friendly-table-name="order_parts" camel-case-name="orderParts" pascal-case-name="OrderParts" singular-camel-case-name="orderPart" singular-pascal-case-name="OrderPart">
+    <column column-name="order_part_id" camel-case-name="orderPartId" pascal-case-name="OrderPartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="order_id" camel-case-name="orderId" pascal-case-name="OrderId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="part_id" camel-case-name="partId" pascal-case-name="PartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="quantity" camel-case-name="quantity" pascal-case-name="Quantity" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="unit_price" camel-case-name="unitPrice" pascal-case-name="UnitPrice" data-type="real" length="4" precision="24" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="supplier_part_number" camel-case-name="supplierPartNumber" pascal-case-name="SupplierPartNumber" data-type="varchar" length="32" precision="32" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="manufacturer_part_number" camel-case-name="manufacturerPartNumber" pascal-case-name="ManufacturerPartNumber" data-type="varchar" length="32" precision="32" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="manufacturer_name" camel-case-name="manufacturerName" pascal-case-name="ManufacturerName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="description" camel-case-name="description" pascal-case-name="Description" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__order_pa__6C38802E73710F37" unique="true" primary-key="true">
+      <index-column index-column-name="order_part_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="orders" friendly-name="orders">
+        <column pk-column-name="order_id" fk-column-name="order_id" />
+      </foreign-key>
+      <foreign-key table-name="parts" friendly-name="parts">
+        <column pk-column-name="part_id" fk-column-name="part_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="orders" friendly-table-name="orders" camel-case-name="orders" pascal-case-name="Orders" singular-camel-case-name="order" singular-pascal-case-name="Order">
+    <column column-name="order_id" camel-case-name="orderId" pascal-case-name="OrderId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="user_id" camel-case-name="userId" pascal-case-name="UserId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="supplier_id" camel-case-name="supplierId" pascal-case-name="SupplierId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="order_date" camel-case-name="orderDate" pascal-case-name="OrderDate" data-type="date" length="3" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="order_number" camel-case-name="orderNumber" pascal-case-name="OrderNumber" data-type="varchar" length="24" precision="24" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="currency_code" camel-case-name="currencyCode" pascal-case-name="CurrencyCode" data-type="char" length="3" precision="3" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="status" camel-case-name="status" pascal-case-name="Status" data-type="smallint" length="2" precision="5" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <index name="PK__orders__46596229C1B2A01B" unique="true" primary-key="true">
+      <index-column index-column-name="order_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="suppliers" friendly-name="suppliers">
+        <column pk-column-name="supplier_id" fk-column-name="supplier_id" />
+      </foreign-key>
+      <foreign-key table-name="users" friendly-name="users">
+        <column pk-column-name="user_id" fk-column-name="user_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="part_types" friendly-table-name="part_types" camel-case-name="partTypes" pascal-case-name="PartTypes" singular-camel-case-name="partType" singular-pascal-case-name="PartType">
+    <column column-name="part_type_id" camel-case-name="partTypeId" pascal-case-name="PartTypeId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="parent_id" camel-case-name="parentId" pascal-case-name="ParentId" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="short_name" camel-case-name="shortName" pascal-case-name="ShortName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="long_name" camel-case-name="longName" pascal-case-name="LongName" data-type="varchar" length="120" precision="120" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="mouser_url" camel-case-name="mouserUrl" pascal-case-name="MouserUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <index name="PK__part_typ__538E6B3B2B4F2036" unique="true" primary-key="true">
+      <index-column index-column-name="part_type_id" />
+    </index>
+  </table>
+  <table table-name="parts" friendly-table-name="parts" camel-case-name="parts" pascal-case-name="Parts" singular-camel-case-name="part" singular-pascal-case-name="Part">
+    <column column-name="part_id" camel-case-name="partId" pascal-case-name="PartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="part_type_id" camel-case-name="partTypeId" pascal-case-name="PartTypeId" data-type="bigint" length="8" precision="19" scale="0" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="part_number" camel-case-name="partNumber" pascal-case-name="PartNumber" data-type="varchar" length="32" precision="32" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="series" camel-case-name="series" pascal-case-name="Series" data-type="varchar" length="32" precision="32" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="description" camel-case-name="description" pascal-case-name="Description" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="manufacturer_id" camel-case-name="manufacturerId" pascal-case-name="ManufacturerId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="product_url" camel-case-name="productUrl" pascal-case-name="ProductUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="image_url" camel-case-name="imageUrl" pascal-case-name="ImageUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="datasheet_url" camel-case-name="datasheetUrl" pascal-case-name="DatasheetUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__parts__A0E3FAB8CD10DF8F" unique="true" primary-key="true">
+      <index-column index-column-name="part_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="manufacturers" friendly-name="manufacturers">
+        <column pk-column-name="manufacturer_id" fk-column-name="manufacturer_id" />
+      </foreign-key>
+      <foreign-key table-name="part_types" friendly-name="part_types">
+        <column pk-column-name="part_type_id" fk-column-name="part_type_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="project_parts" friendly-table-name="project_parts" camel-case-name="projectParts" pascal-case-name="ProjectParts" singular-camel-case-name="projectPart" singular-pascal-case-name="ProjectPart">
+    <column column-name="project_part_id" camel-case-name="projectPartId" pascal-case-name="ProjectPartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="project_id" camel-case-name="projectId" pascal-case-name="ProjectId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="part_id" camel-case-name="partId" pascal-case-name="PartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="quantity" camel-case-name="quantity" pascal-case-name="Quantity" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <index name="PK__project___5687D8CAA6F95866" unique="true" primary-key="true">
+      <index-column index-column-name="project_part_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="parts" friendly-name="parts">
+        <column pk-column-name="part_id" fk-column-name="part_id" />
+      </foreign-key>
+      <foreign-key table-name="projects" friendly-name="projects">
+        <column pk-column-name="project_id" fk-column-name="project_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="projects" friendly-table-name="projects" camel-case-name="projects" pascal-case-name="Projects" singular-camel-case-name="project" singular-pascal-case-name="Project">
+    <column column-name="project_id" camel-case-name="projectId" pascal-case-name="ProjectId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="user_id" camel-case-name="userId" pascal-case-name="UserId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="project_name" camel-case-name="projectName" pascal-case-name="ProjectName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="description" camel-case-name="description" pascal-case-name="Description" data-type="varchar" length="255" precision="255" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="notes" camel-case-name="notes" pascal-case-name="Notes" data-type="text" length="16" precision="null" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__projects__BC799E1F232C5860" unique="true" primary-key="true">
+      <index-column index-column-name="project_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="users" friendly-name="users">
+        <column pk-column-name="user_id" fk-column-name="user_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="storage_bins" friendly-table-name="storage_bins" camel-case-name="storageBins" pascal-case-name="StorageBins" singular-camel-case-name="storageBin" singular-pascal-case-name="StorageBin">
+    <column column-name="storage_bin_id" camel-case-name="storageBinId" pascal-case-name="StorageBinId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="user_id" camel-case-name="userId" pascal-case-name="UserId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="short_name" camel-case-name="shortName" pascal-case-name="ShortName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="long_name" camel-case-name="longName" pascal-case-name="LongName" data-type="varchar" length="120" precision="120" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="description" camel-case-name="description" pascal-case-name="Description" data-type="varchar" length="255" precision="255" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="location" camel-case-name="location" pascal-case-name="Location" data-type="varchar" length="80" precision="80" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="max_column" camel-case-name="maxColumn" pascal-case-name="MaxColumn" data-type="int" length="4" precision="10" scale="0" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="max_row" camel-case-name="maxRow" pascal-case-name="MaxRow" data-type="int" length="4" precision="10" scale="0" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__storage___27CB114E83C0ACE3" unique="true" primary-key="true">
+      <index-column index-column-name="storage_bin_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="users" friendly-name="users">
+        <column pk-column-name="user_id" fk-column-name="user_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="suppliers" friendly-table-name="suppliers" camel-case-name="suppliers" pascal-case-name="Suppliers" singular-camel-case-name="supplier" singular-pascal-case-name="Supplier">
+    <column column-name="supplier_id" camel-case-name="supplierId" pascal-case-name="SupplierId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="supplier_name" camel-case-name="supplierName" pascal-case-name="SupplierName" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="base_url" camel-case-name="baseUrl" pascal-case-name="BaseUrl" data-type="varchar" length="255" precision="255" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <index name="PK__supplier__6EE594E8EF6D01B1" unique="true" primary-key="true">
+      <index-column index-column-name="supplier_id" />
+    </index>
+  </table>
+  <table table-name="user_parts" friendly-table-name="user_parts" camel-case-name="userParts" pascal-case-name="UserParts" singular-camel-case-name="userPart" singular-pascal-case-name="UserPart">
+    <column column-name="user_part_id" camel-case-name="userPartId" pascal-case-name="UserPartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="user_id" camel-case-name="userId" pascal-case-name="UserId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="part_id" camel-case-name="partId" pascal-case-name="PartId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="storage_bins_id" camel-case-name="storageBinsId" pascal-case-name="StorageBinsId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="columnNumber" camel-case-name="columnNumber" pascal-case-name="ColumnNumber" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="rowNumber" camel-case-name="rowNumber" pascal-case-name="RowNumber" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="quantity" camel-case-name="quantity" pascal-case-name="Quantity" data-type="int" length="4" precision="10" scale="0" allow-null="false" identity="false" is-row-guid="false" />
+    <index name="PK__user_par__A8C9F4BE84EF9E7E" unique="true" primary-key="true">
+      <index-column index-column-name="user_part_id" />
+    </index>
+    <relationships>
+      <foreign-key table-name="parts" friendly-name="parts">
+        <column pk-column-name="part_id" fk-column-name="part_id" />
+      </foreign-key>
+      <foreign-key table-name="storage_bins" friendly-name="storage_bins">
+        <column pk-column-name="storage_bin_id" fk-column-name="storage_bins_id" />
+      </foreign-key>
+      <foreign-key table-name="users" friendly-name="users">
+        <column pk-column-name="user_id" fk-column-name="user_id" />
+      </foreign-key>
+    </relationships>
+  </table>
+  <table table-name="users" friendly-table-name="users" camel-case-name="users" pascal-case-name="Users" singular-camel-case-name="user" singular-pascal-case-name="User">
+    <column column-name="user_id" camel-case-name="userId" pascal-case-name="UserId" data-type="bigint" length="8" precision="19" scale="0" allow-null="false" identity="true" is-row-guid="false" />
+    <column column-name="user_name" camel-case-name="userName" pascal-case-name="UserName" data-type="varchar" length="24" precision="24" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="email" camel-case-name="email" pascal-case-name="Email" data-type="varchar" length="60" precision="60" scale="null" allow-null="false" identity="false" is-row-guid="false" />
+    <column column-name="mouser_api_key_orders" camel-case-name="mouserApiKeyOrders" pascal-case-name="MouserApiKeyOrders" data-type="varchar" length="128" precision="128" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <column column-name="mouser_api_key_search" camel-case-name="mouserApiKeySearch" pascal-case-name="MouserApiKeySearch" data-type="varchar" length="128" precision="128" scale="null" allow-null="true" identity="false" is-row-guid="false" />
+    <index name="PK__users__B9BE370F0E5FEA53" unique="true" primary-key="true">
+      <index-column index-column-name="user_id" />
+    </index>
+  </table>
+</database>

@@ -1,0 +1,50 @@
+# No secrets here.
+.env
+
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Lock files created by Open Office
+.~lock
+
+# VS Code
+.vscode/
+
+# The built executable
+vintage-parts
+
+# Postman collections are being generated and take up way too much space and edits
+# to be worth storing at this point in time.
+postman/collections/
+
+# Hidden files with shadow files being created in it. Removed until proven there is
+# something in them worth preserving.
+.postman/
+*.cs
+*.html

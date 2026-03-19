@@ -1,0 +1,4 @@
+supplier_id,supplier_name,base_url
+1,Mouser,https://www.mouser.com/
+2,DigiKey,https://www.digikey.com/
+3,Element 14,https://element14.com/

@@ -1,0 +1,7 @@
+storage_bin_id,user_id,short_name,long_name,description,location,max_column,max_row
+1,1,"The Universe","The Universe","It's really big.","Everywhere",1,1
+2,1,"Lego Bin Alpha","Lego Bin Alpha","","The lab",5,8
+3,1,"Five slot drawers","Five slot drawers","","The lab",1,5
+4,1,"Wooden drawers","Wooden drawers","","The lab",1,16
+5,1,"Box of crap","Box of crap","","The lab",1,1
+6,1,"Cupboard","Cupboard","","The lab",1,1

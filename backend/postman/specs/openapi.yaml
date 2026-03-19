@@ -1,0 +1,1423 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.2"
+  title: "Vintage Parts"
+  description: Track all your electronic components for vintage amplifier repairs.
+
+# Component file
+paths:
+  /manufacturers:
+    get:
+      summary: Returns a list of all the manufacturers.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ManufacturerList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new manufacturer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ManufacturerBody"
+      responses:
+        "201":
+          description: Created a new record manufacturer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manufacturer"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /manufacturers/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the manufacturer
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read a manufacturer
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manufacturer"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing manufacturer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Manufacturer"
+      responses:
+        "200":
+          description: Manufacturer was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manufacturer"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a manufacturer
+      responses:
+        "200":
+          description: Manufacturer was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /orders:
+    get:
+      summary: Returns a list of all the orders.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderBody"
+      responses:
+        "201":
+          description: Created a new order
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /orders/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the order
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an order
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+      responses:
+        "200":
+          description: Order was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete an order
+      responses:
+        "200":
+          description: Order was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /orderParts:
+    get:
+      summary: Returns a list of all the orderParts.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderPartList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new orderPart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderPartBody"
+      responses:
+        "201":
+          description: Created a new order part
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderPart"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /orderParts/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the order part
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an orderPart
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing order part
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderPart"
+      responses:
+        "200":
+          description: Order part was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete an order part
+      responses:
+        "200":
+          description: Order part was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /parts:
+    get:
+      summary: Returns a list of all the parts.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new part
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PartBody"
+      responses:
+        "201":
+          description: Created a new part
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Part"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /parts/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the part
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an part
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Part"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing part
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Part"
+      responses:
+        "200":
+          description: Part was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Part"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a part
+      responses:
+        "200":
+          description: Part was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /partTypes:
+    get:
+      summary: Returns a list of all the partTypes.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartTypeList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new partType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PartTypeBody"
+      responses:
+        "201":
+          description: Created a new part type
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartType"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /partTypes/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the partType
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an partType
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartType"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing partType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PartType"
+      responses:
+        "200":
+          description: Part type was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartType"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a part type
+      responses:
+        "200":
+          description: Part type was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /projects:
+    get:
+      summary: Returns a list of all the projects.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectBody"
+      responses:
+        "201":
+          description: Created a new project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /projects/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the project
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an project
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Project"
+      responses:
+        "200":
+          description: Project was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete an project
+      responses:
+        "200":
+          description: Project was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /projectParts:
+    get:
+      summary: Returns a list of all the projectParts.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectPartList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new projectPart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectPartBody"
+      responses:
+        "201":
+          description: Added a part to an existing project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectPart"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /projectParts/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the projectPart
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an projectPart
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing projectPart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectPart"
+      responses:
+        "200":
+          description: ProjectPart was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete an projectPart
+      responses:
+        "200":
+          description: ProjectPart was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /storageBins:
+    get:
+      summary: Returns a list of all the storageBins.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageBinList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new storageBin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageBinBody"
+      responses:
+        "201":
+          description: Created a new storage bin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageBin"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /storageBins/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the storageBin
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read a storage bin
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageBin"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing storageBin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageBin"
+      responses:
+        "200":
+          description: Storage bin was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageBin"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a storage bin
+      responses:
+        "200":
+          description: Storage bin was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /suppliers:
+    get:
+      summary: Returns a list of all the suppliers.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupplierBody"
+      responses:
+        "201":
+          description: Created a new supplier
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Supplier"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /suppliers/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the supplier
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an supplier
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Supplier"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Supplier"
+      responses:
+        "200":
+          description: Supplier was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Supplier"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a supplier
+      responses:
+        "200":
+          description: Supplier was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /users:
+    get:
+      summary: Returns a list of all the users.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBody"
+      responses:
+        "201":
+          description: Created a new user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /users/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the user
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read a user
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: User was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete an user
+      responses:
+        "200":
+          description: User was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /userParts:
+    get:
+      summary: Returns a list of all the userParts.
+      responses:
+        "200":
+          description: A list has been provided in the response body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPartList"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    post:
+      summary: Create a new userPart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPartBody"
+      responses:
+        "201":
+          description: Created a new user part
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPart"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+  /userParts/{PrimaryKeyId}:
+    parameters:
+      - name: PrimaryKeyId
+        description: The unique identifier of the userPart
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PrimaryKeyId"
+    get:
+      summary: Read an userPart
+      responses:
+        "200":
+          description: The requested record has been returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    put:
+      summary: Update an existing userPart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPart"
+      responses:
+        "200":
+          description: UserPart was sucessfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPart"
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+    delete:
+      summary: Delete a user part
+      responses:
+        "200":
+          description: UserPart was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          $ref: "#/components/responses/ResourceNotFound"
+        "500":
+          $ref: "#/components/responses/UnexpectedError"
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string
+    PrimaryKeyId:
+      type: integer
+      format: int64
+    ForeignKeyId:
+      type: integer
+      format: int64
+    ManufacturerBody:
+      type: object
+      properties:
+        manufacturerName: 
+          type: string
+          maximum: 60
+        description: 
+          type: string
+          maximum: 255
+        manufacturerUrl: 
+          type: string
+          maximum: 255
+        aliases: 
+          type: string
+          maximum: 255
+      required:
+        - manufacturerName
+    Manufacturer:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ManufacturerBody"
+        - required:
+          - manufacturerId
+        - properties:
+            manufacturerId:
+              type: integer
+              format: int64
+      example:
+        Manufacturer:
+            manufacturerId: 1
+            manufacturerName: Texas Instruments
+            manufacturerUrl: https://www.ti.com/
+            description: 
+            aliases: TI
+    ManufacturerList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Manufacturer"
+    OrderBody:
+      type: object
+      properties:
+        userId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        supplierId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        orderDate: 
+          type: string
+          format: date-time
+        orderNumber: 
+          type: string
+          maximum: 24
+        currencyCode: 
+          type: string
+          maximum: 3
+        status:
+          type: string
+          enum:
+            - created
+            - shipped
+            - imported
+            - complete
+      required:
+        - userId
+        - supplierId
+        - orderDate
+        - orderNumber
+        - currencyCode
+        - status
+    Order:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/OrderBody"
+        - required:
+          - orderId
+        - properties:
+            orderId:
+              type: integer
+              format: int64
+      example:
+        Order:
+          orderId: 1
+          userId: 1
+          supplierId: 1
+          orderNumber: 235434
+          currencyCode: AUD
+          orderStatus: complete
+    OrderList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Order"
+    OrderPartBody:
+      type: object
+      properties:
+        partId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        orderId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        quantity: 
+          type: integer
+          format: int32
+        unitPrice: 
+          type: number
+          format: float
+        supplierPartNumber: 
+          type: string
+          maximum: 32
+        manufacturerPartNumber: 
+          type: string
+          maximum: 32
+        manufacturerName: 
+          type: string
+          maximum: 60
+        description: 
+          type: string
+          maximum: 255
+      required:
+        - orderId
+        - partId
+        - quantity
+        - unitPrice
+        - supplierPartNumber
+        - manufacturerPartNumber
+        - manufacturerName
+    OrderPart:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/OrderPartBody"
+        - required:
+          - orderPartId
+        - properties:
+            orderPartId:
+              type: integer
+              format: int64
+      example:
+        OrderPart:
+          orderPartId: 1
+          partId: 1
+          orderId: 1
+          quantity: 10
+          unitPrice: 4.53
+          supplierPartNumber: NE555
+          manufacturerPartNumber: NE555P
+          manufacturerName: Texas Instruments
+          description: A 555 timer IC.
+    OrderPartList:
+      type: array
+      items:
+        $ref: "#/components/schemas/OrderPart"
+    PartBody:
+      type: object
+      properties:
+        partTypeId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        partNumber: 
+          type: string
+          maximum: 32
+        series: 
+          type: string
+          maximum: 32
+        description: 
+          type: string
+          maximum: 255
+        manufacturerId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        productUrl: 
+          type: string
+          maximum: 255
+        imageUrl: 
+          type: string
+          maximum: 255
+        datasheetUrl: 
+          type: string
+          maximum: 255
+      required:
+        - partNumber
+        - manufacturerId
+    Part:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/PartBody"
+        - required:
+          - partId
+        - properties:
+            partId:
+              type: integer
+              format: int64
+      example:
+        Part:
+            partId: 1
+            partTypeId: 1
+            partNumber: string
+            manufacturerId: 1
+            series: NE555
+            description: string
+            productUrl: string
+            imageUrl: string
+            datasheetUrl: string
+    PartList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Part"
+    PartTypeBody:
+      type: object
+      properties:
+        parentId: 
+          type: integer
+          format: int32
+        shortName: 
+          type: string
+          maximum: 60
+        longName: 
+          type: string
+          maximum: 120
+        mouserUrl: 
+          type: string
+          maximum: 255
+      required:
+        - parentId
+        - shortName
+        - longName
+        - mouserUrl
+    PartType:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/PartTypeBody"
+        - required:
+          - partTypeId
+        - properties:
+            partTypeId:
+              type: integer
+              format: int64
+      example:
+        PartType:
+            partTypeId: 1
+            parentId: 
+            shortName: Timer ICs
+            longName: Timer ICs
+            mouserUrl: string
+    PartTypeList:
+      type: array
+      items:
+        $ref: "#/components/schemas/PartType"
+    ProjectBody:
+      type: object
+      properties:
+        userId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        projectName: 
+          type: string
+          maximum: 60
+        description: 
+          type: string
+          maximum: 255
+        notes: 
+          type: string
+      required:
+        - userId
+        - projectName
+        - description
+    Project:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ProjectBody"
+        - required:
+          - projecId
+        - properties:
+            projectId:
+              type: integer
+              format: int64
+      example:
+        Project:
+            projecId: 1
+            userId: 1
+            description: Ben Eater's Clock
+            notes: No notes.
+    ProjectList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Project"
+    ProjectPartBody:
+      type: object
+      properties:
+        projectId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        partId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        quantity: 
+          type: integer
+          format: int32
+      required:
+        - projectId
+        - partId
+        - quantity
+    ProjectPart:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ProjectPartBody"
+        - required:
+          - projectPartId
+        - properties:
+            projectPartId:
+              type: integer
+              format: int64
+      example:
+        ProjectPart:
+          projectPartId: 1
+          projectId: 1
+          partId: 1
+    ProjectPartList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ProjectPart"
+    StorageBinBody:
+      type: object
+      properties:
+        userId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        shortName: 
+          type: string
+          maximum: 60
+        longName: 
+          type: string
+          maximum: 120
+        description: 
+          type: string
+          maximum: 255
+        location: 
+          type: string
+          maximum: 80
+        maxColumn: 
+          type: integer
+          format: int32
+        maxRow: 
+          type: integer
+          format: int32
+      required:
+        - userId
+        - shortName
+        - longName
+    StorageBin:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/StorageBinBody"
+        - required:
+          - storageBinId
+        - properties:
+            storageBinId:
+              type: integer
+              format: int64
+      example:
+        StorageBin:
+          storageBinId: 1
+          userId: 1
+          storageBinName: LEGO Box 01
+          location: The laboratory
+    StorageBinList:
+      type: array
+      items:
+        $ref: "#/components/schemas/StorageBin"
+    SupplierBody:
+      type: object
+      properties:
+        supplierName: 
+          type: string
+          maximum: 60
+        baseUrl: 
+          type: string
+          maximum: 255
+      required:
+        - supplierName
+        - baseUrl
+    Supplier:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SupplierBody"
+        - required:
+          - supplierId
+        - properties:
+            supplierId:
+              type: integer
+              format: int64
+      example:
+        Supplier:
+            supplierId: 1
+            supplierName: Mouser
+            baseUrl: https://au.mouser.com/
+    SupplierList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Supplier"
+    UserBody:
+      type: object
+      properties:
+        userName: 
+          type: string
+          maximum: 24
+        email: 
+          type: string
+          maximum: 60
+        mouserApiKeyOrders: 
+          type: string
+          maximum: 128
+        mouserApiKeySearch: 
+          type: string
+          maximum: 128
+      required:
+        - userName
+        - email
+    User:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/UserBody"
+        - required:
+          - userId
+        - properties:
+            userId:
+              type: integer
+              format: int64
+      example:
+        User:
+          userId: 1
+          userName: Ivan Hawkes
+          email: ivan.hawkes@gmail.com
+    UserList:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+    UserPartBody:
+      type: object
+      properties:
+        userId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        partId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        storageBinsId:
+          $ref: "#/components/schemas/ForeignKeyId"
+        columnNumber: 
+          type: integer
+          format: int32
+        rowNumber: 
+          type: integer
+          format: int32
+        quantity: 
+          type: integer
+          format: int32
+      required:
+        - userId
+        - partId
+        - storageBinsId
+        - columnNumber
+        - rowNumber
+        - quantity
+    UserPart:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/UserPartBody"
+        - required:
+          - userPartId
+        - properties:
+            userPartId:
+              type: integer
+              format: int64
+      example:
+        UserPart:
+          userPartId: 1
+          userId: 1
+          partId: 1
+          storageBinsId: 1
+          columnNumber: 1
+          rowNumber: 1
+          quantity: 1
+    UserPartList:
+      type: array
+      items:
+        $ref: "#/components/schemas/UserPart"
+  responses:
+    ResourceNotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthenticated:
+      description: You are not authenicated. Please log in.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorised:
+      description: You are not authorised to access that resource.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    MethodNotAllowed:
+      description: This action is not permitted on this resource.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    UnexpectedError:
+      description: Unexpected error. This action was not anticipated.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+security:
+  - ApiKey: []
+servers:
+  - url: https://localhost:8080
+    description: Local server

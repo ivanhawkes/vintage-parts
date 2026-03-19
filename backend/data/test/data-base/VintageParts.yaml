@@ -1,0 +1,295 @@
+﻿
+Manufacturer:
+  type: object
+  properties:
+    manufacturerId: 
+      type: integer
+      format: int64
+    manufacturerName: 
+      type: string
+      maximum: 60
+    description: 
+      type: string
+      maximum: 255
+    manufacturerUrl: 
+      type: string
+      maximum: 255
+    aliases: 
+      type: string
+      maximum: 255
+  required:
+    - manufacturerId
+    - manufacturerName
+OrderPart:
+  type: object
+  properties:
+    orderPartId: 
+      type: integer
+      format: int64
+    orderId: 
+      type: integer
+      format: int64
+    partId: 
+      type: integer
+      format: int64
+    quantity: 
+      type: integer
+      format: int32
+    unitPrice: 
+      type: number
+      format: float
+    supplierPartNumber: 
+      type: string
+      maximum: 32
+    manufacturerPartNumber: 
+      type: string
+      maximum: 32
+    manufacturerName: 
+      type: string
+      maximum: 60
+    description: 
+      type: string
+      maximum: 255
+  required:
+    - orderPartId
+    - orderId
+    - partId
+    - quantity
+    - unitPrice
+    - supplierPartNumber
+    - manufacturerPartNumber
+    - manufacturerName
+Order:
+  type: object
+  properties:
+    orderId: 
+      type: integer
+      format: int64
+    userId: 
+      type: integer
+      format: int64
+    supplierId: 
+      type: integer
+      format: int64
+    orderDate: 
+      type: string
+      format: date-time
+    orderNumber: 
+      type: string
+      maximum: 24
+    currencyCode: 
+      type: string
+      maximum: 3
+    status: 
+      type: integer
+      format: int16
+  required:
+    - orderId
+    - userId
+    - supplierId
+    - orderDate
+    - orderNumber
+    - currencyCode
+    - status
+PartType:
+  type: object
+  properties:
+    partTypeId: 
+      type: integer
+      format: int64
+    parentId: 
+      type: integer
+      format: int32
+    shortName: 
+      type: string
+      maximum: 60
+    longName: 
+      type: string
+      maximum: 120
+    mouserUrl: 
+      type: string
+      maximum: 255
+  required:
+    - partTypeId
+    - parentId
+    - shortName
+    - longName
+    - mouserUrl
+Part:
+  type: object
+  properties:
+    partId: 
+      type: integer
+      format: int64
+    partTypeId: 
+      type: integer
+      format: int64
+    partNumber: 
+      type: string
+      maximum: 32
+    series: 
+      type: string
+      maximum: 32
+    description: 
+      type: string
+      maximum: 255
+    manufacturerId: 
+      type: integer
+      format: int64
+    productUrl: 
+      type: string
+      maximum: 255
+    imageUrl: 
+      type: string
+      maximum: 255
+    datasheetUrl: 
+      type: string
+      maximum: 255
+  required:
+    - partId
+    - partNumber
+    - manufacturerId
+ProjectPart:
+  type: object
+  properties:
+    projectPartId: 
+      type: integer
+      format: int64
+    projectId: 
+      type: integer
+      format: int64
+    partId: 
+      type: integer
+      format: int64
+    quantity: 
+      type: integer
+      format: int32
+  required:
+    - projectPartId
+    - projectId
+    - partId
+    - quantity
+Project:
+  type: object
+  properties:
+    projectId: 
+      type: integer
+      format: int64
+    userId: 
+      type: integer
+      format: int64
+    projectName: 
+      type: string
+      maximum: 60
+    description: 
+      type: string
+      maximum: 255
+    notes: 
+      type: string
+  required:
+    - projectId
+    - userId
+    - projectName
+    - description
+StorageBin:
+  type: object
+  properties:
+    storageBinId: 
+      type: integer
+      format: int64
+    userId: 
+      type: integer
+      format: int64
+    shortName: 
+      type: string
+      maximum: 60
+    longName: 
+      type: string
+      maximum: 120
+    description: 
+      type: string
+      maximum: 255
+    location: 
+      type: string
+      maximum: 80
+    maxColumn: 
+      type: integer
+      format: int32
+    maxRow: 
+      type: integer
+      format: int32
+  required:
+    - storageBinId
+    - userId
+    - shortName
+    - longName
+Supplier:
+  type: object
+  properties:
+    supplierId: 
+      type: integer
+      format: int64
+    supplierName: 
+      type: string
+      maximum: 60
+    baseUrl: 
+      type: string
+      maximum: 255
+  required:
+    - supplierId
+    - supplierName
+    - baseUrl
+UserPart:
+  type: object
+  properties:
+    userPartId: 
+      type: integer
+      format: int64
+    userId: 
+      type: integer
+      format: int64
+    partId: 
+      type: integer
+      format: int64
+    storageBinsId: 
+      type: integer
+      format: int64
+    columnNumber: 
+      type: integer
+      format: int32
+    rowNumber: 
+      type: integer
+      format: int32
+    quantity: 
+      type: integer
+      format: int32
+  required:
+    - userPartId
+    - userId
+    - partId
+    - storageBinsId
+    - columnNumber
+    - rowNumber
+    - quantity
+User:
+  type: object
+  properties:
+    userId: 
+      type: integer
+      format: int64
+    userName: 
+      type: string
+      maximum: 24
+    email: 
+      type: string
+      maximum: 60
+    mouserApiKeyOrders: 
+      type: string
+      maximum: 128
+    mouserApiKeySearch: 
+      type: string
+      maximum: 128
+  required:
+    - userId
+    - userName
+    - email

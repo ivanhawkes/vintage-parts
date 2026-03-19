@@ -1,0 +1,365 @@
+part_type_id,parent_id,short_name,long_name,mouser_url
+1000,0,circuit-protection,Circuit Protection,/circuit-protection/
+2000,0,connectors,Connectors,/connectors/
+3000,0,electromechanical,electromechanical,/electromechanical/
+4000,0,embedded-solutions,embedded-solutions,/embedded-solutions/
+5000,0,enclosures,enclosures,/enclosures/
+6000,0,engineering-development-tools,engineering-development-tools,/semiconductors/engineering-development-tools/
+7000,0,industrial-automation,industrial-automation,/industrial-automation/
+8000,0,led-lighting,led-lighting,/optoelectronics/led-lighting/
+9000,0,optoelectronics,optoelectronics,/optoelectronics/
+10000,0,passive-components,passive-components,/passive-components/
+11000,0,power,power,/power/
+12000,0,rf-wireless,rf-wireless,/rf-wireless/
+13000,0,semiconductors,semiconductors,/semiconductors/
+14000,0,sensors,sensors,/sensors/
+15000,0,test-measurement,test-measurement,/test-measurement/
+16000,0,thermal-management,thermal-management,/thermal-management/
+17000,0,tools-supplies,tools-supplies,/tools-supplies/
+18000,0,wire-cable,wire-cable,/wire-cable/
+1001,1000,circuit-breakers-accessories,Circuit Breakers & Accessories,/circuit-protection/circuit-breakers-accessories/
+1002,1000,circuit-protection-kits,Circuit Protection Kits,/circuit-protection/circuit-protection-kits/
+1003,1000,esd-protection-diodes-tvs-diodes,ESD Protection Diodes / TVS Diodes,/circuit-protection/esd-protection-diodes-tvs-diodes/
+1004,1000,fuse-holders,Fuse Holders,/circuit-protection/fuse-holders/
+1005,1000,fuses,Fuses,/circuit-protection/fuses/
+1006,1000,gas-discharge-tubes-gdts-gas-plasma-arrestors,Gas Discharge Tubes - GDTs / Gas Plasma Arrestors,/circuit-protection/gas-discharge-tubes-gdts-gas-plasma-arrestors/
+1007,1000,led-protection-devices,LED Protection Devices,/circuit-protection/led-protection-devices/
+1008,1000,power-outlet-strips,Power Outlet Strips,/circuit-protection/power-outlet-strips/
+1009,1000,resettable-fuses-pptc,Resettable Fuses - PPTC,/circuit-protection/resettable-fuses-pptc/
+1010,1000,surge-protective-devices-spd,Surge Protective Devices - SPD,/circuit-protection/surge-protective-devices-spd/
+1011,1000,thermal-cutoffs,Thermal Cutoffs,/circuit-protection/thermal-cutoffs/
+1012,1000,thermistors,Thermistors,/circuit-protection/thermistors/
+1013,1000,thyristors,Thyristors,/circuit-protection/thyristors/
+1014,1000,varistors,Varistors,/circuit-protection/varistors/Audio & Video Connectors
+2001,2000,audio-video-connectors,Audio & Video Connectors,/connectors/audio-video-connectors/
+2002,2000,automotive-connectors,Automotive Connectors,/connectors/automotive-connectors/
+2003,2000,backplane-connectors,Backplane Connectors,/connectors/backplane-connectors/
+2004,2000,board-to-board-mezzanine-connectors,Board to Board & Mezzanine Connectors,/connectors/board-to-board-mezzanine-connectors/
+2005,2000,cable-assemblies,Cable Assemblies,/connectors/cable-assemblies/
+2006,2000,card-edge-connectors,Card Edge Connectors,/connectors/card-edge-connectors/
+2007,2000,circular-connectors,Circular Connectors,/connectors/circular-connectors/
+2008,2000,contact-probes,Contact Probes,/connectors/contact-probes/
+2009,2000,data-bus-components,Data Bus Components,/connectors/data-bus-components/
+2010,2000,d-sub-connectors,D-Sub Connectors,/connectors/d-sub-connectors/
+2011,2000,ev-connectors,EV Connectors,/connectors/ev-connectors/
+2012,2000,ffc-fpc,FFC / FPC,/connectors/ffc-fpc/
+2013,2000,fiber-optic-connectors,Fiber Optic Connectors,/connectors/fiber-optic-connectors/
+2014,2000,fiber-optic-mil-spec-connectors,Fiber Optic MIL Spec Connectors,/connectors/fiber-optic-mil-spec-connectors/
+2015,2000,headers-wire-housings,Headers & Wire Housings,/connectors/headers-wire-housings/
+2016,2000,i-o-connectors,I/O Connectors,/connectors/i-o-connectors/
+2017,2000,ic-component-sockets,IC & Component Sockets,/connectors/ic-component-sockets/
+2018,2000,ieee-1394-connectors,IEEE 1394 Connectors,/connectors/ieee-1394-connectors/
+2019,2000,junction-systems,Junction Systems,/connectors/junction-systems/
+2020,2000,lighting-connectors,Lighting Connectors,/connectors/lighting-connectors/
+2021,2000,memory-connectors,Memory Connectors,/connectors/memory-connectors/
+2022,2000,mil-spec-mil-type,MIL-Spec / MIL-Type,/connectors/mil-spec-mil-type/
+2023,2000,modular-connectors-ethernet-connectors,Modular Connectors / Ethernet Connectors,/connectors/modular-connectors-ethernet-connectors/
+2024,2000,pin-socket-connectors,Pin & Socket Connectors,/connectors/pin-socket-connectors/
+2025,2000,power-connectors,Power Connectors,/connectors/power-connectors/
+2026,2000,rf-interconnects,RF Interconnects,/connectors/rf-interconnects/
+2027,2000,solar-connectors-photovoltaic-connectors,Solar Connectors / Photovoltaic Connectors,/connectors/solar-connectors-photovoltaic-connectors/
+2028,2000,terminal-blocks,Terminal Blocks,/connectors/terminal-blocks/
+2029,2000,terminals,Terminals,/connectors/terminals/
+2030,2000,unspecified-connectors,Unspecified Connectors,/connectors/unspecified-connectors/
+2031,2000,usb-connectors,USB Connectors,/connectors/usb-connectors/
+2032,2000,wire-cable,Wire & Cable,/connectors/wire-cable/Audio Devices
+3001,3000,audio-devices,Audio Devices,/electromechanical/audio-devices/
+3002,3000,circuit-breakers,Circuit Breakers,/electromechanical/circuit-breakers/
+3003,3000,encoders,Encoders,/electromechanical/encoders/
+3004,3000,hardware,Hardware,/electromechanical/hardware/
+3005,3000,knobs-dials,Knobs & Dials,/electromechanical/knobs-dials/
+3006,3000,motors-drives,Motors & Drives,/electromechanical/motors-drives/
+3007,3000,printers,Printers,/electromechanical/printers/
+3008,3000,relays-contactors-solenoids,"Relays, Contactors & Solenoids",/electromechanical/relays-contactors-solenoids/
+3009,3000,switches,Switches,/electromechanical/switches/
+4001,4000,accelerator-cards,Accelerator Cards,/embedded-solutions/accelerator-cards/
+4002,4000,audio-modules,Audio Modules,/embedded-solutions/audio-modules/
+4003,4000,computing,Computing,/embedded-solutions/computing/
+4004,4000,data-conversion-modules,Data Conversion Modules,/embedded-solutions/data-conversion-modules/
+4005,4000,display-modules,Display Modules,/embedded-solutions/display-modules/
+4006,4000,energy-harvesting-modules,Energy Harvesting Modules,/embedded-solutions/energy-harvesting-modules/
+4007,4000,engineering-tools,Engineering Tools,/embedded-solutions/engineering-tools/
+4008,4000,ethernet-communication-modules,Ethernet & Communication Modules,/embedded-solutions/ethernet-communication-modules/
+4009,4000,interface-modules,Interface Modules,/embedded-solutions/interface-modules/
+4010,4000,memory-data-storage,Memory & Data Storage,/embedded-solutions/memory-data-storage/
+4011,4000,modules-accessories,Modules Accessories,/embedded-solutions/modules-accessories/
+4012,4000,other-modules,Other Modules,/embedded-solutions/other-modules/
+4013,4000,power-management-modules,Power Management Modules,/embedded-solutions/power-management-modules/
+4014,4000,sensor-modules,Sensor Modules,/embedded-solutions/sensor-modules/
+4015,4000,software,Software,/embedded-solutions/software/
+4016,4000,video-modules,Video Modules,/embedded-solutions/video-modules/
+4017,4000,wireless-rf-modules,Wireless & RF Modules,/embedded-solutions/wireless-rf-modules/
+5001,5000,battery-enclosures,Battery Enclosures,/enclosures/battery-enclosures/
+5002,5000,desktop-rack-mount-panel-enclosures,Desktop & Rack Mount Panel Enclosures,/enclosures/desktop-rack-mount-panel-enclosures/
+5003,5000,din-rail-mount-enclosures,DIN Rail Mount Enclosures,/enclosures/din-rail-mount-enclosures/
+5004,5000,electrical-enclosure-accessories,Electrical Enclosure Accessories,/enclosures/electrical-enclosure-accessories/
+5005,5000,enclosures-for-single-board-computing,Enclosures for Single Board Computing,/enclosures/enclosures-for-single-board-computing/
+5006,5000,enclosures-boxes-cases,"Enclosures, Boxes, & Cases",/enclosures/enclosures-boxes-cases/
+5007,5000,floor-mount-panel-enclosures,Floor Mount Panel Enclosures,/enclosures/floor-mount-panel-enclosures/
+5008,5000,freestanding-panel-enclosures,Freestanding Panel Enclosures,/enclosures/freestanding-panel-enclosures/
+5009,5000,junction-boxes,Junction Boxes,/enclosures/junction-boxes/
+5010,5000,miniature-cases-industrial,Miniature Cases - Industrial,/enclosures/miniature-cases-industrial/
+5011,5000,operator-console-enclosures,Operator Console Enclosures,/enclosures/operator-console-enclosures/
+5012,5000,pushbutton-enclosures,Pushbutton Enclosures,/enclosures/pushbutton-enclosures/
+5013,5000,racks-cabinets,Racks & Cabinets,/enclosures/racks-cabinets/
+5014,5000,storage-boxes-cases,Storage Boxes & Cases,/enclosures/storage-boxes-cases/
+5015,5000,wall-mount-panel-enclosures,Wall Mount Panel Enclosures,/enclosures/wall-mount-panel-enclosures/
+6001,6000,analog-digital-ic-development-tools,Analog & Digital IC Development Tools,/semiconductors/engineering-development-tools/analog-digital-ic-development-tools/
+6002,6000,assortment-kits,Assortment Kits,/semiconductors/engineering-development-tools/assortment-kits/
+6003,6000,communication-development-tools,Communication Development Tools,/semiconductors/engineering-development-tools/communication-development-tools/
+6004,6000,development-software,Development Software,/semiconductors/engineering-development-tools/development-software/
+6005,6000,display-development-tools,Display Development Tools,/semiconductors/engineering-development-tools/display-development-tools/
+6006,6000,embedded-processor-development-kits,Embedded Processor Development Kits,/semiconductors/engineering-development-tools/embedded-processor-development-kits/
+6007,6000,embedded-tools-accessories,Embedded Tools & Accessories,/semiconductors/engineering-development-tools/embedded-tools-accessories/
+6008,6000,fiber-optic-development-tools,Fiber Optic Development Tools,/semiconductors/engineering-development-tools/fiber-optic-development-tools/
+6009,6000,led-lighting-development-tools,LED Lighting Development Tools,/semiconductors/engineering-development-tools/led-lighting-development-tools/
+6010,6000,memory-ic-development-tools,Memory IC Development Tools,/semiconductors/engineering-development-tools/memory-ic-development-tools/
+6011,6000,optoelectronic-development-tools,Optoelectronic Development Tools,/semiconductors/engineering-development-tools/optoelectronic-development-tools/
+6012,6000,power-management-ic-development-tools,Power Management IC Development Tools,/semiconductors/engineering-development-tools/power-management-ic-development-tools/
+6013,6000,programmable-logic-ic-development-tools,Programmable Logic IC Development Tools,/semiconductors/engineering-development-tools/programmable-logic-ic-development-tools/
+6014,6000,rf-wireless-development-tools,RF / Wireless Development Tools,/semiconductors/engineering-development-tools/rf-wireless-development-tools/
+6015,6000,security-authentication-development-tools,Security / Authentication Development Tools,/semiconductors/engineering-development-tools/security-authentication-development-tools/
+6016,6000,sensor-development-tools,Sensor Development Tools,/semiconductors/engineering-development-tools/sensor-development-tools/
+7001,7000,circuit-breakers-surge-protectors-fuses,"Circuit Breakers, Surge Protectors & Fuses",/industrial-automation/circuit-breakers-surge-protectors-fuses/
+7002,7000,contactors-relays,Contactors & Relays,/industrial-automation/contactors-relays/
+7003,7000,controllers,Controllers,/industrial-automation/controllers/
+7004,7000,enclosures-racks,Enclosures & Racks,/industrial-automation/enclosures-racks/
+7005,7000,field-i-o,Field I/O,/industrial-automation/field-i-o/
+7006,7000,hmi-industrial-pcs,HMI & Industrial PCs,/industrial-automation/hmi-industrial-pcs/
+7007,7000,lighting-indication,Lighting & Indication,/industrial-automation/lighting-indication/
+7008,7000,motors-motor-drives,Motors & Motor Drives,/industrial-automation/motors-motor-drives/
+7009,7000,network-communications,Network & Communications,/industrial-automation/network-communications/
+7010,7000,panel-meters,Panel Meters,/industrial-automation/panel-meters/
+7011,7000,power-products,Power Products,/industrial-automation/power-products/
+7012,7000,pushbuttons-electromechanical-switches,Pushbuttons & Electromechanical Switches,/industrial-automation/pushbuttons-electromechanical-switches/
+7013,7000,robotics,Robotics,/industrial-automation/robotics/
+7014,7000,sensors-transducers,Sensors & Transducers,/industrial-automation/sensors-transducers/
+7015,7000,terminal-blocks-connectors,Terminal Blocks & Connectors,/industrial-automation/terminal-blocks-connectors/
+7016,7000,tools-test-equipment-hardware,"Tools, Test Equipment & Hardware",/industrial-automation/tools-test-equipment-hardware/
+7017,7000,valves,Valves,/industrial-automation/valves/
+7018,7000,wire-cable-assemblies,Wire & Cable Assemblies,/industrial-automation/wire-cable-assemblies/
+7019,7000,wire-cable-management,Wire & Cable Management,/industrial-automation/wire-cable-management/
+8001,8000,led-bulbs-modules,LED Bulbs & Modules,/optoelectronics/led-lighting/led-bulbs-modules/
+8002,8000,led-lighting-electronics,LED Lighting Electronics,/optoelectronics/led-lighting/led-lighting-electronics/
+8003,8000,led-lighting-mechanical,LED Lighting Mechanical,/optoelectronics/led-lighting/led-lighting-mechanical/
+8004,8000,led-lighting-optics,LED Lighting Optics,/optoelectronics/led-lighting/led-lighting-optics/
+8005,8000,leds-light-emitting-diodes,LEDs - Light Emitting Diodes,/optoelectronics/led-lighting/leds-light-emitting-diodes/
+8006,8000,lighting-connectors,Lighting Connectors,/optoelectronics/led-lighting/lighting-connectors/
+9001,9000,backlighting-components,Backlighting Components,/optoelectronics/backlighting-components/
+9002,9000,cameras-accessories,Cameras & Accessories,/optoelectronics/cameras-accessories/
+9003,9000,displays,Displays,/optoelectronics/displays/
+9004,9000,drivers,Drivers,/optoelectronics/drivers/
+9005,9000,fiber-optics,Fiber Optics,/optoelectronics/fiber-optics/
+9006,9000,infrared-communications,Infrared Communications,/optoelectronics/infrared-communications/
+9007,9000,lamps-holders-accessories,"Lamps, Holders & Accessories",/optoelectronics/lamps-holders-accessories/
+9008,9000,lasers,Lasers,/optoelectronics/lasers/
+9009,9000,led-indication,LED Indication,/optoelectronics/led-indication/
+9010,9000,led-lighting,LED Lighting,/optoelectronics/led-lighting/
+9011,9000,leds,LEDs,/optoelectronics/leds/
+9012,9000,optical-detectors-sensors,Optical Detectors & Sensors,/optoelectronics/optical-detectors-sensors/
+9013,9000,optical-switches,Optical Switches,/optoelectronics/optical-switches/
+9014,9000,optocouplers-photocouplers,Optocouplers / Photocouplers,/optoelectronics/optocouplers-photocouplers/
+10001,10000,antenna-accessories,Antenna Accessories,/passive-components/antenna-accessories/
+10002,10000,antennas,Antennas,/passive-components/antennas/
+10003,10000,audio-transformers-signal-transformers,Audio Transformers / Signal Transformers,/passive-components/audio-transformers-signal-transformers/
+10004,10000,capacitors,Capacitors,/passive-components/capacitors/
+10005,10000,emi-filters-emi-suppression,EMI Filters / EMI Suppression,/passive-components/emi-filters-emi-suppression/
+10006,10000,encoders,Encoders,/passive-components/encoders/
+10007,10000,ferrites,Ferrites,/passive-components/ferrites/
+10008,10000,filters,Filters,/passive-components/filters/
+10009,10000,frequency-control-timing-devices,Frequency Control & Timing Devices,/passive-components/frequency-control-timing-devices/
+10010,10000,inductors-chokes-coils,"Inductors, Chokes & Coils",/passive-components/inductors-chokes-coils/
+10011,10000,potentiometers-trimmers-rheostats,"Potentiometers, Trimmers & Rheostats",/passive-components/potentiometers-trimmers-rheostats/
+10012,10000,resistors,Resistors,/passive-components/resistors/
+10013,10000,signal-conditioning,Signal Conditioning,/passive-components/signal-conditioning/
+10014,10000,thermistors-ntc,Thermistors - NTC,/passive-components/thermistors-ntc/
+10015,10000,thermistors-ptc,Thermistors - PTC,/passive-components/thermistors-ptc/
+10016,10000,varistors,Varistors,/passive-components/varistors/
+11001,11000,ac-power-cords,AC Power Cords,/power/ac-power-cords/
+11002,11000,ac-power-entry-modules,AC Power Entry Modules,/power/ac-power-entry-modules/
+11003,11000,ac-power-plugs-receptacles,AC Power Plugs & Receptacles,/power/ac-power-plugs-receptacles/
+11004,11000,batteries,Batteries,/power/batteries/
+11005,11000,battery-chargers,Battery Chargers,/power/battery-chargers/
+11006,11000,battery-holders-clips-contacts,"Battery Holders, Clips & Contacts",/power/battery-holders-clips-contacts/
+11007,11000,buffer-modules,Buffer Modules,/power/buffer-modules/
+11008,11000,dc-power-connectors,DC Power Connectors,/power/dc-power-connectors/
+11009,11000,dc-power-cords,DC Power Cords,/power/dc-power-cords/
+11010,11000,dc-dc-converters,DC/DC Converters,/power/dc-dc-converters/
+11011,11000,e-mobility,E-Mobility,/power/e-mobility/
+11012,11000,power-condition,Power Condition,/power/power-condition/
+11013,11000,power-inverters,Power Inverters,/power/power-inverters/
+11014,11000,power-management-ics,Power Management ICs,/power/power-management-ics/
+11015,11000,power-supplies,Power Supplies,/power/power-supplies/
+11016,11000,redundancy-modules,Redundancy Modules,/power/redundancy-modules/
+11017,11000,solar-panels-solar-cells,Solar Panels & Solar Cells,/power/solar-panels-solar-cells/
+11018,11000,supercapacitors,Supercapacitors,/power/supercapacitors/
+11019,11000,transformers,Transformers,/power/transformers/
+12001,12000,antennas-accessories,Antennas & Accessories,/rf-wireless/antennas-accessories/
+12002,12000,nfc-rfid-solutions,NFC/RFID Solutions,/rf-wireless/nfc-rfid-solutions/
+12003,12000,rf-wireless-development-tools,RF / Wireless Development Tools,/rf-wireless/rf-wireless-development-tools/
+12004,12000,rf-cables-connectors,RF Cables & Connectors,/rf-wireless/rf-cables-connectors/
+12005,12000,rf-capacitors,RF Capacitors,/rf-wireless/rf-capacitors/
+12006,12000,rf-inductors,RF Inductors,/rf-wireless/rf-inductors/
+12007,12000,rf-integrated-circuits,RF Integrated Circuits,/rf-wireless/rf-integrated-circuits/
+12008,12000,rf-relays,RF Relays,/rf-wireless/rf-relays/
+12009,12000,rf-resistors,RF Resistors,/rf-wireless/rf-resistors/
+12010,12000,rf-test-equipment,RF Test Equipment,/rf-wireless/rf-test-equipment/
+12011,12000,rf-transistors,RF Transistors,/rf-wireless/rf-transistors/
+12012,12000,wireless-modules,Wireless Modules,/rf-wireless/wireless-modules/
+13101,13100,discrete-semiconductors,Discrete Semiconductors,/semiconductors/discrete-semiconductors/
+13102,13100,diodes-rectifiers,Diodes & Rectifiers,/semiconductors/discrete-semiconductors/diodes-rectifiers/
+13103,13100,discrete-power-modules,Discrete & Power Modules,/semiconductors/discrete-semiconductors/discrete-power-modules/
+13104,13100,thyristors,Thyristors,/semiconductors/discrete-semiconductors/thyristors/
+13105,13100,transistors,Transistors,/semiconductors/discrete-semiconductors/transistors/
+13106,13200,embedded-processors-controllers,embedded-processors-controllers,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/
+13201,13200,cpld-complex-programmable-logic-devices,CPLD - Complex Programmable Logic Devices,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/cpld-complex-programmable-logic-devices/
+13202,13200,cpu-central-processing-units,CPU - Central Processing Units,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/cpu-central-processing-units/
+13203,13200,digital-signal-processors-controllers-dsp-dsc,"Digital Signal Processors & Controllers - DSP, DSC",/semiconductors/integrated-circuits-ics/embedded-processors-controllers/digital-signal-processors-controllers-dsp-dsc/
+13204,13200,eepld-electronically-erasable-programmable-logic-devices,EEPLD - Electronically Erasable Programmable Logic Devices,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/eepld-electronically-erasable-programmable-logic-devices/
+13205,13200,fpga-configuration-memory,FPGA - Configuration Memory,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/fpga-configuration-memory/
+13206,13200,fpga-field-programmable-gate-array,FPGA - Field Programmable Gate Array,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/fpga-field-programmable-gate-array/
+13207,13200,microcontrollers-mcu,Microcontrollers - MCU,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/microcontrollers-mcu/
+13208,13200,microprocessors-mpu,Microprocessors - MPU,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/microprocessors-mpu/
+13209,13200,processors-application-specialized,Processors - Application Specialized,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/processors-application-specialized/
+13210,13200,rf-system-on-a-chip-soc,RF System on a Chip - SoC,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/rf-system-on-a-chip-soc/
+13211,13200,spld-simple-programmable-logic-devices,SPLD - Simple Programmable Logic Devices,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/spld-simple-programmable-logic-devices/
+13212,13200,systems-on-a-chip-soc,Systems on a Chip - SoC,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/systems-on-a-chip-soc/
+13301,13300,integrated-circuits-ics,integrated-circuits-ics,/semiconductors/integrated-circuits-ics/
+13302,13300,active-filter,Active Filter,/semiconductors/integrated-circuits-ics/active-filter/
+13303,13300,amplifier-ics,Amplifier ICs,/semiconductors/integrated-circuits-ics/amplifier-ics/
+13304,13300,audio-ics,Audio ICs,/semiconductors/integrated-circuits-ics/audio-ics/
+13305,13300,chipsets,Chipsets,/semiconductors/integrated-circuits-ics/chipsets/
+13306,13300,clock-timer-ics,Clock & Timer ICs,/semiconductors/integrated-circuits-ics/clock-timer-ics/
+13307,13300,communication-networking-ics,Communication & Networking ICs,/semiconductors/integrated-circuits-ics/communication-networking-ics/
+13308,13300,counter-ics,Counter ICs,/semiconductors/integrated-circuits-ics/counter-ics/
+13309,13300,data-converter-ics,Data Converter ICs,/semiconductors/integrated-circuits-ics/data-converter-ics/
+13310,13300,digital-potentiometer-ics,Digital Potentiometer ICs,/semiconductors/integrated-circuits-ics/digital-potentiometer-ics/
+13311,13300,driver-ics,Driver ICs,/semiconductors/integrated-circuits-ics/driver-ics/
+13312,13300,embedded-processors-controllers,Embedded Processors & Controllers,/semiconductors/integrated-circuits-ics/embedded-processors-controllers/
+13313,13300,equalizers,Equalizers,/semiconductors/integrated-circuits-ics/equalizers/
+13314,13300,interface-ics,Interface ICs,/semiconductors/integrated-circuits-ics/interface-ics/
+13315,13300,logic-ics,Logic ICs,/semiconductors/integrated-circuits-ics/logic-ics/
+13316,13300,memory-ics,Memory ICs,/semiconductors/integrated-circuits-ics/memory-ics/
+13317,13300,multimedia-ics,Multimedia ICs,/semiconductors/integrated-circuits-ics/multimedia-ics/
+13318,13300,optocouplers-photocouplers,Optocouplers / Photocouplers,/semiconductors/integrated-circuits-ics/optocouplers-photocouplers/
+13319,13300,power-management-ics,Power Management ICs,/semiconductors/integrated-circuits-ics/power-management-ics/
+13320,13300,programmable-logic-ics,Programmable Logic ICs,/semiconductors/integrated-circuits-ics/programmable-logic-ics/
+13321,13300,security-ics-authentication-ics,Security ICs / Authentication ICs,/semiconductors/integrated-circuits-ics/security-ics-authentication-ics/
+13322,13300,switch-ics,Switch ICs,/semiconductors/integrated-circuits-ics/switch-ics/
+13323,13300,wireless-rf-integrated-circuits,Wireless & RF Integrated Circuits,/semiconductors/integrated-circuits-ics/wireless-rf-integrated-circuits/
+13401,13400,memory-ics,memory-ics,/semiconductors/memory-ics/
+13402,13400,dram,DRAM,/semiconductors/memory-ics/dram/
+13403,13400,eeprom,EEPROM,/semiconductors/memory-ics/eeprom/
+13404,13400,emmc,eMMC,/semiconductors/memory-ics/emmc/
+13405,13400,eprom,EPROM,/semiconductors/memory-ics/eprom/
+13406,13400,fifo,FIFO,/semiconductors/memory-ics/fifo/
+13407,13400,f-ram,F-RAM,/semiconductors/memory-ics/f-ram/
+13408,13400,managed-nand,Managed NAND,/semiconductors/memory-ics/managed-nand/
+13409,13400,memory-controllers,Memory Controllers,/semiconductors/memory-ics/memory-controllers/
+13410,13400,memory-ic-development-tools,Memory IC Development Tools,/semiconductors/memory-ics/memory-ic-development-tools/
+13411,13400,memory-modules-memory-cards,Memory Modules & Memory Cards,/semiconductors/memory-ics/memory-modules-memory-cards/
+13412,13400,mram,MRAM,/semiconductors/memory-ics/mram/
+13413,13400,multichip-packages,Multichip Packages,/semiconductors/memory-ics/multichip-packages/
+13414,13400,nand-flash,NAND Flash,/semiconductors/memory-ics/nand-flash/
+13415,13400,nor-flash,NOR Flash,/semiconductors/memory-ics/nor-flash/
+13416,13400,nvram,NVRAM,/semiconductors/memory-ics/nvram/
+13417,13400,sram,SRAM,/semiconductors/memory-ics/sram/
+13418,13400,storage,Storage,/semiconductors/memory-ics/storage/
+13419,13400,universal-flash-storage-ufs,Universal Flash Storage - UFS,/semiconductors/memory-ics/universal-flash-storage-ufs/
+13501,13500,wireless-rf-semiconductors,wireless-rf-semiconductors,/semiconductors/wireless-rf-semiconductors/
+13502,13500,pin-diodes,PIN Diodes,/semiconductors/wireless-rf-semiconductors/pin-diodes/
+13503,13500,rf-circulators,RF Circulators,/semiconductors/wireless-rf-semiconductors/rf-circulators/
+13504,13500,rf-isolators,RF Isolators,/semiconductors/wireless-rf-semiconductors/rf-isolators/
+13505,13500,transistors-rf,Transistors RF,/semiconductors/wireless-rf-semiconductors/transistors-rf/
+13506,13500,wireless-rf-integrated-circuits,Wireless & RF Integrated Circuits,/semiconductors/wireless-rf-semiconductors/wireless-rf-integrated-circuits/
+14001,14000,audio-sensors,Audio Sensors,/sensors/audio-sensors/
+14002,14000,biometric-sensors,Biometric Sensors,/sensors/biometric-sensors/
+14003,14000,capacitive-touch-sensors,Capacitive Touch Sensors,/sensors/capacitive-touch-sensors/
+14004,14000,current-sensors,Current Sensors,/sensors/current-sensors/
+14005,14000,encoders,Encoders,/sensors/encoders/
+14006,14000,environmental-sensors,Environmental Sensors,/sensors/environmental-sensors/
+14007,14000,flow-sensors,Flow Sensors,/sensors/flow-sensors/
+14008,14000,flow-sensors-industrial,Flow Sensors - Industrial,/sensors/flow-sensors-industrial/
+14009,14000,force-sensors-load-cells,Force Sensors & Load Cells,/sensors/force-sensors-load-cells/
+14010,14000,force-sensors-load-cells-industrial,Force Sensors & Load Cells - Industrial,/sensors/force-sensors-load-cells-industrial/
+14011,14000,level-sensors,Level Sensors,/sensors/level-sensors/
+14012,14000,linear-displacement-sensors,Linear Displacement Sensors,/sensors/linear-displacement-sensors/
+14013,14000,magnetic-sensors,Magnetic Sensors,/sensors/magnetic-sensors/
+14014,14000,motion-position-sensors,Motion & Position Sensors,/sensors/motion-position-sensors/
+14015,14000,optical-sensors,Optical Sensors,/sensors/optical-sensors/
+14016,14000,pressure-sensors,Pressure Sensors,/sensors/pressure-sensors/
+14017,14000,proximity-sensors,Proximity Sensors,/sensors/proximity-sensors/
+14018,14000,proximity-sensors-industrial,Proximity Sensors - Industrial,/sensors/proximity-sensors-industrial/
+14019,14000,sensor-development-tools,Sensor Development Tools,/sensors/sensor-development-tools/
+14020,14000,sensor-hardware-accessories,Sensor Hardware & Accessories,/sensors/sensor-hardware-accessories/
+14021,14000,temperature-sensors,Temperature Sensors,/sensors/temperature-sensors/
+14022,14000,vision-sensors,Vision Sensors,/sensors/vision-sensors/
+15001,15000,analyzers,Analyzers,/test-measurement/analyzers/
+15002,15000,audio-video-test-equipment,Audio/Video Test Equipment,/test-measurement/audio-video-test-equipment/
+15003,15000,battery-testers,Battery Testers,/test-measurement/battery-testers/
+15004,15000,calibration-equipment,Calibration Equipment,/test-measurement/calibration-equipment/
+15005,15000,calibration-warranties-service-plans,"Calibration, Warranties, & Service Plans",/test-measurement/calibration-warranties-service-plans/
+15006,15000,component-testers,Component Testers,/test-measurement/component-testers/
+15007,15000,datalogging-acquisition,Datalogging & Acquisition,/test-measurement/datalogging-acquisition/
+15008,15000,dc-electronic-loads,DC Electronic Loads,/test-measurement/dc-electronic-loads/
+15009,15000,decade-boxes,Decade Boxes,/test-measurement/decade-boxes/
+15010,15000,environmental-test-equipment,Environmental Test Equipment,/test-measurement/environmental-test-equipment/
+15011,15000,fiber-optic-testing,Fiber Optic Testing,/test-measurement/fiber-optic-testing/
+15012,15000,frequency-counters,Frequency Counters,/test-measurement/frequency-counters/
+15013,15000,function-generators-synthesizers,Function Generators & Synthesizers,/test-measurement/function-generators-synthesizers/
+15014,15000,insulation-testers-megohmmeters,Insulation Testers / Megohmmeters,/test-measurement/insulation-testers-megohmmeters/
+15015,15000,lan-telecom-cable-testing,LAN/Telecom/Cable Testing,/test-measurement/lan-telecom-cable-testing/
+15016,15000,multimeters-voltmeters,Multimeters & Voltmeters,/test-measurement/multimeters-voltmeters/
+15017,15000,oscilloscopes,Oscilloscopes,/test-measurement/oscilloscopes/
+15018,15000,panel-meters,Panel Meters,/test-measurement/panel-meters/
+15019,15000,power-supplies-bench-top,Power Supplies - Bench Top,/test-measurement/power-supplies-bench-top/
+15020,15000,rf-test-cables,RF Test Cables,/test-measurement/rf-test-cables/
+15021,15000,rf-test-equipment,RF Test Equipment,/test-measurement/rf-test-equipment/
+15022,15000,source-measure-units-smus,Source Measure Units - SMUs,/test-measurement/source-measure-units-smus/
+15023,15000,test-equipment-accessories,Test Equipment Accessories,/test-measurement/test-equipment-accessories/
+15024,15000,test-equipment-power-cords,Test Equipment Power Cords,/test-measurement/test-equipment-power-cords/
+15025,15000,thermal-imaging-cameras,Thermal Imaging Cameras,/test-measurement/thermal-imaging-cameras/
+16001,16000,fans-blowers,Fans & Blowers,/thermal-management/fans-blowers/
+16002,16000,heat-exchangers,Heat Exchangers,/thermal-management/heat-exchangers/
+16003,16000,heat-sinks,Heat Sinks,/thermal-management/heat-sinks/
+16004,16000,led-heat-sinks-thermal-substrates,LED Heat Sinks & Thermal Substrates,/thermal-management/led-heat-sinks-thermal-substrates/
+16005,16000,liquid-cold-plates-liquid-cooling-heat-pipes,"Liquid Cold Plates, Liquid Cooling & Heat Pipes",/thermal-management/liquid-cold-plates-liquid-cooling-heat-pipes/
+16006,16000,liquid-cooling-connectors-accessories,Liquid Cooling Connectors & Accessories,/thermal-management/liquid-cooling-connectors-accessories/
+16007,16000,recirculating-chillers,Recirculating Chillers,/thermal-management/recirculating-chillers/
+16008,16000,temperature-sensors,Temperature Sensors,/thermal-management/temperature-sensors/
+16009,16000,thermal-cutoffs,Thermal Cutoffs,/thermal-management/thermal-cutoffs/
+16010,16000,thermal-interface-products,Thermal Interface Products,/thermal-management/thermal-interface-products/
+16011,16000,thermistors,Thermistors,/thermal-management/thermistors/
+16012,16000,thermoelectric-assemblies,Thermoelectric Assemblies,/thermal-management/thermoelectric-assemblies/
+16013,16000,thermoelectric-peltier-modules,Thermoelectric Peltier Modules,/thermal-management/thermoelectric-peltier-modules/
+17001,17000,3d-printing-accessories,3D Printing & Accessories,/tools-supplies/3d-printing-accessories/
+17002,17000,accessories,Accessories,/tools-supplies/accessories/
+17003,17000,adhesive-tapes,Adhesive Tapes,/tools-supplies/adhesive-tapes/
+17004,17000,anti-static-control-products,Anti-Static Control Products,/tools-supplies/anti-static-control-products/
+17005,17000,brushes,Brushes,/tools-supplies/brushes/
+17006,17000,chemicals,Chemicals,/tools-supplies/chemicals/
+17007,17000,dry-wipes,Dry Wipes,/tools-supplies/dry-wipes/
+17008,17000,labels-industrial-warning-signs,Labels & Industrial Warning Signs,/tools-supplies/labels-industrial-warning-signs/
+17009,17000,liquid-dispensers-bottles,Liquid Dispensers & Bottles,/tools-supplies/liquid-dispensers-bottles/
+17010,17000,maker-diy-educational,"Maker/DIY, Educational",/tools-supplies/maker-diy-educational/
+17011,17000,pre-saturated-wipes,Pre-Saturated Wipes,/tools-supplies/pre-saturated-wipes/
+17012,17000,prototyping-products,Prototyping Products,/tools-supplies/prototyping-products/
+17013,17000,soldering,Soldering,/tools-supplies/soldering/
+17014,17000,storage-boxes-cases,Storage Boxes & Cases,/tools-supplies/storage-boxes-cases/
+17015,17000,swabs,Swabs,/tools-supplies/swabs/
+17016,17000,tools,Tools,/tools-supplies/tools/
+18001,18000,bus-bar-wire,Bus Bar Wire,/wire-cable/bus-bar-wire/
+18002,18000,cable-assemblies,Cable Assemblies,/wire-cable/cable-assemblies/
+18003,18000,coaxial-cables,Coaxial Cables,/wire-cable/coaxial-cables/
+18004,18000,ffc-fpc-jumper-cables,FFC / FPC Jumper Cables,/wire-cable/ffc-fpc-jumper-cables/
+18005,18000,fiber-optic,Fiber Optic,/wire-cable/fiber-optic/
+18006,18000,fiber-optic-cables,Fiber Optic Cables,/wire-cable/fiber-optic-cables/
+18007,18000,flat-cables,Flat Cables,/wire-cable/flat-cables/
+18008,18000,ground-wire-ground-braid,Ground Wire & Ground Braid,/wire-cable/ground-wire-ground-braid/
+18009,18000,hook-up-wire,Hook-up Wire,/wire-cable/hook-up-wire/
+18010,18000,magnet-wire,Magnet Wire,/wire-cable/magnet-wire/
+18011,18000,multi-conductor-cables,Multi-Conductor Cables,/wire-cable/multi-conductor-cables/
+18012,18000,solar-cable,Solar Cable,/wire-cable/solar-cable/
+18013,18000,test-lead-wire,Test Lead Wire,/wire-cable/test-lead-wire/
+18014,18000,wire-cable-management,Wire & Cable Management,/wire-cable/wire-cable-management/
+18015,18000,wire-wrap-wire,Wire Wrap Wire,/wire-cable/wire-wrap-wire/
