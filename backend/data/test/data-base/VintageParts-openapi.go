@@ -504,7 +504,7 @@ func (Server) PostOrders(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_orders_create (%d, %d, %s, '%s', %s, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_orders_create (%d, %d, %s, '%s', '%s', %d);",
 		entity.UserId,
 		entity.SupplierId,
 		entity.OrderDate,
@@ -607,7 +607,7 @@ func (Server) PutOrdersPrimaryKeyId(w http.ResponseWriter, r *http.Request, prim
 	}
 
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_orders_update (%d, %d, %d, %s, '%s', %s, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_orders_update (%d, %d, %d, %s, '%s', '%s', %d);",
 		primaryKeyId,
 		entity.UserId,
 		entity.SupplierId,
