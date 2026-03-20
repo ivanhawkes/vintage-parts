@@ -23,77 +23,30 @@ type Pages = {
   "/admin": {
     params: {};
   };
-  "/login": {
-    params: {};
-  };
-  "/register": {
-    params: {};
-  };
-  "/concerts": {
-    params: {};
-  };
-  "/concerts/:city": {
-    params: {
-      "city": string;
-    };
-  };
-  "/concerts/trending": {
-    params: {};
-  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/main" | "/about" | "/admin" | "/login" | "/register" | "/concerts" | "/concerts/:city" | "/concerts/trending";
+    page: "/" | "/main" | "/about" | "/admin";
   };
-  "./src/pages/Main.tsx": {
-    id: "src/pages/Main";
+  "./pages/Main.tsx": {
+    id: "pages/Main";
     page: "/main";
   };
-  "./src/pages/About.tsx": {
-    id: "src/pages/About";
+  "./pages/About.tsx": {
+    id: "pages/About";
     page: "/about";
   };
-  "./src/pages/Admin.tsx": {
-    id: "src/pages/Admin";
+  "./pages/Admin.tsx": {
+    id: "pages/Admin";
     page: "/admin";
-  };
-  "./auth/layout.tsx": {
-    id: "auth/layout";
-    page: "/login" | "/register" | "/concerts" | "/concerts/:city" | "/concerts/trending";
-  };
-  "./auth/login.tsx": {
-    id: "auth/login";
-    page: "/login";
-  };
-  "./auth/register.tsx": {
-    id: "auth/register";
-    page: "/register";
-  };
-  "./concerts/home.tsx": {
-    id: "concerts/home";
-    page: "/concerts";
-  };
-  "./concerts/city.tsx": {
-    id: "concerts/city";
-    page: "/concerts/:city";
-  };
-  "./concerts/trending.tsx": {
-    id: "concerts/trending";
-    page: "/concerts/trending";
   };
 };
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "src/pages/Main": typeof import("./app/./src/pages/Main.tsx");
-  "src/pages/About": typeof import("./app/./src/pages/About.tsx");
-  "src/pages/Admin": typeof import("./app/./src/pages/Admin.tsx");
-  "auth/layout": typeof import("./app/./auth/layout.tsx");
-  "auth/login": typeof import("./app/./auth/login.tsx");
-  "auth/register": typeof import("./app/./auth/register.tsx");
-  "concerts/home": typeof import("./app/./concerts/home.tsx");
-  "concerts/city": typeof import("./app/./concerts/city.tsx");
-  "concerts/trending": typeof import("./app/./concerts/trending.tsx");
+  "pages/Main": typeof import("./app/./pages/Main.tsx");
+  "pages/About": typeof import("./app/./pages/About.tsx");
+  "pages/Admin": typeof import("./app/./pages/Admin.tsx");
 };

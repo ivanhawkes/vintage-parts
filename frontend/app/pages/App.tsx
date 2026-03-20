@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 
 // Define an interface for the REST API response JSON.
 type User = {
