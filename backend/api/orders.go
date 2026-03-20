@@ -36,6 +36,7 @@ func ScanRowOrder(rows pgx.Rows) Order {
 func (Server) GetOrders(w http.ResponseWriter, r *http.Request) {
 	// Build a query.
 	query := "SELECT * FROM cp_orders_list ();"
+	global.Logs.Info(query)
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -146,6 +147,7 @@ func (Server) DeleteOrdersPrimaryKeyId(w http.ResponseWriter, r *http.Request, p
 // (GET /orders/{PrimaryKeyId})
 func (Server) GetOrdersPrimaryKeyId(w http.ResponseWriter, r *http.Request, primaryKeyId PrimaryKeyId) {
 	query := fmt.Sprintf("SELECT * FROM cp_orders_read (%d);", primaryKeyId)
+	global.Logs.Info(query)
 
 	rows, err := global.DBPool.Query(context.Background(), query)
 	if err != nil {

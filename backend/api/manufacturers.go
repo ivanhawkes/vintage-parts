@@ -34,7 +34,7 @@ func ScanRowManufacturer(rows pgx.Rows) Manufacturer {
 func (Server) GetManufacturers(w http.ResponseWriter, r *http.Request) {
 	// Build a query.
 	query := "SELECT * FROM cp_manufacturers_list ();"
-	global.Logs.Info("GET /manufacturers")
+	global.Logs.Info(query)
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -143,6 +143,7 @@ func (Server) DeleteManufacturersPrimaryKeyId(w http.ResponseWriter, r *http.Req
 // (GET /manufacturers/{PrimaryKeyId})
 func (Server) GetManufacturersPrimaryKeyId(w http.ResponseWriter, r *http.Request, primaryKeyId PrimaryKeyId) {
 	query := fmt.Sprintf("SELECT * FROM cp_manufacturers_read (%d);", primaryKeyId)
+	global.Logs.Info(query)
 
 	rows, err := global.DBPool.Query(context.Background(), query)
 	if err != nil {

@@ -34,6 +34,7 @@ func ScanRowUser(rows pgx.Rows) User {
 func (Server) GetUsers(w http.ResponseWriter, r *http.Request) {
 	// Build a query.
 	query := "SELECT * FROM cp_users_list ();"
+	global.Logs.Info(query)
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -142,6 +143,7 @@ func (Server) DeleteUsersPrimaryKeyId(w http.ResponseWriter, r *http.Request, pr
 // (GET /users/{PrimaryKeyId})
 func (Server) GetUsersPrimaryKeyId(w http.ResponseWriter, r *http.Request, primaryKeyId PrimaryKeyId) {
 	query := fmt.Sprintf("SELECT * FROM cp_users_read (%d);", primaryKeyId)
+	global.Logs.Info(query)
 
 	rows, err := global.DBPool.Query(context.Background(), query)
 	if err != nil {

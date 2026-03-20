@@ -1,41 +1,94 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [posts, setPosts] = useState([]);
+// Define an interface for the REST API response JSON.
+type User = {
+  userId: number;
+  userName: string;
+  email: string;
+};
+ 
+const FetchUsers: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+ 
+    fetchData();
+  }, []);
+ 
+  return (
+    <div>
+      <h2>Users</h2>
+      {users.map((user) => (
+          <li key={user.userId}>
+            {user.userName} - {user.email}
+          </li>
+        ))}
+    </div>
+  );
+};
 
-   useEffect(() => {
-      fetch('http://localhost:8080/manufacturers/1')
-         .then((response) => response.json())
-         .then((data) => {
-            console.log(data);
-            setPosts(data);
-         })
-         .catch((err) => {
-            console.log(err.message);
-         });
-   }, []);
-
-   //for (const data of posts){ console.log(data)}
-
-   return (
-    <>
-      <section id="center">
-        <button className="counter" onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
-        </button>
-        <p>
-          Results: { posts.length }
-        </p>
-        <p>
-          Id: {posts.manufacturerId }<br />
-          Name: {posts.manufacturerName }<br />
-          Url: {posts.manufacturerUrl }<br />
-        </p>
-      </section>
-    </>
-  )
+// Define an interface for the REST API response JSON.
+interface Manufacturer {
+  manufacturerId: number;
+  manufacturerName: string;
+  manufacturerUrl: string;
 }
 
+const FetchManufacturers: React.FC = () => {
+  const [manufacturers, setManufacturers] = useState<Manufacturer[]>([]);
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/manufacturers');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setManufacturers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+ 
+    fetchData();
+  }, []);
+ 
+  return (
+    <div>
+      <h2>Manufacturers</h2>
+      {manufacturers.map((manufacturer) => (
+          <li key={manufacturer.manufacturerId}>
+            {manufacturer.manufacturerName} - {manufacturer.manufacturerUrl}
+          </li>
+        ))}
+    </div>
+  );
+};
+
+
+function App(){
+  return (
+    <>
+    <h1>My App</h1>
+    <FetchUsers />
+    <FetchManufacturers />
+    </>
+  );
+};
+
 export default App
+
