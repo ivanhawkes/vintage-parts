@@ -1007,7 +1007,12 @@ components:
           format: int32
         unitPrice: 
           type: number
-          format: float
+          format: double
+          multipleOf: 0.01
+          minimum: 0
+          exclusiveMinimum: true
+          maximum: 1000000
+          exclusiveMaximum: true
         supplierPartNumber: 
           type: string
           maximum: 32

@@ -138,7 +138,7 @@ type OrderPart struct {
 	PartId                 ForeignKeyId `json:"partId"`
 	Quantity               int32        `json:"quantity"`
 	SupplierPartNumber     string       `json:"supplierPartNumber"`
-	UnitPrice              float32      `json:"unitPrice"`
+	UnitPrice              float64      `json:"unitPrice"`
 }
 
 // OrderPartBody defines model for OrderPartBody.
@@ -150,7 +150,7 @@ type OrderPartBody struct {
 	PartId                 ForeignKeyId `json:"partId"`
 	Quantity               int32        `json:"quantity"`
 	SupplierPartNumber     string       `json:"supplierPartNumber"`
-	UnitPrice              float32      `json:"unitPrice"`
+	UnitPrice              float64      `json:"unitPrice"`
 }
 
 // OrderPartList defines model for OrderPartList.
