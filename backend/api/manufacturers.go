@@ -34,6 +34,7 @@ func ScanRowManufacturer(rows pgx.Rows) Manufacturer {
 func (Server) GetManufacturers(w http.ResponseWriter, r *http.Request) {
 	// Build a query.
 	query := "SELECT * FROM cp_manufacturers_list ();"
+	global.Logs.Info("GET /manufacturers")
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
