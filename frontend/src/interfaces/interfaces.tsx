@@ -1,4 +1,4 @@
-// Define an interface for the REST API response JSON.
+// Manufacturers
 export interface Manufacturer {
   manufacturerId: number;
   manufacturerName: string;
@@ -7,3 +7,11 @@ export interface Manufacturer {
 
 export type Manufacturers = Manufacturer[]
 
+// Users
+export interface User {
+  userId: number;
+  userName: string;
+  email: string;
+};
+ 
+export type Users = User []
