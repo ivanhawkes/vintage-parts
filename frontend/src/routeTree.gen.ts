@@ -9,14 +9,42 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as HelpRouteImport } from './routes/help'
+import { Route as StorageBinsRouteImport } from './routes/storage-bins'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PartsRouteImport } from './routes/parts'
+import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminPartsRouteImport } from './routes/admin/parts'
+import { Route as AdminPartTypesRouteImport } from './routes/admin/part-types'
 import { Route as AdminManufacturersRouteImport } from './routes/admin/manufacturers'
 
-const HelpRoute = HelpRouteImport.update({
-  id: '/help',
-  path: '/help',
+const StorageBinsRoute = StorageBinsRouteImport.update({
+  id: '/storage-bins',
+  path: '/storage-bins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartsRoute = PartsRouteImport.update({
+  id: '/parts',
+  path: '/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -29,6 +57,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPartsRoute = AdminPartsRouteImport.update({
+  id: '/admin/parts',
+  path: '/admin/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPartTypesRoute = AdminPartTypesRouteImport.update({
+  id: '/admin/part-types',
+  path: '/admin/part-types',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminManufacturersRoute = AdminManufacturersRouteImport.update({
   id: '/admin/manufacturers',
   path: '/admin/manufacturers',
@@ -38,44 +86,141 @@ const AdminManufacturersRoute = AdminManufacturersRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/help': typeof HelpRoute
+  '/orders': typeof OrdersRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/storage-bins': typeof StorageBinsRoute
   '/admin/manufacturers': typeof AdminManufacturersRoute
+  '/admin/part-types': typeof AdminPartTypesRoute
+  '/admin/parts': typeof AdminPartsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/help': typeof HelpRoute
+  '/orders': typeof OrdersRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/storage-bins': typeof StorageBinsRoute
   '/admin/manufacturers': typeof AdminManufacturersRoute
+  '/admin/part-types': typeof AdminPartTypesRoute
+  '/admin/parts': typeof AdminPartsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/help': typeof HelpRoute
+  '/orders': typeof OrdersRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/storage-bins': typeof StorageBinsRoute
   '/admin/manufacturers': typeof AdminManufacturersRoute
+  '/admin/part-types': typeof AdminPartTypesRoute
+  '/admin/parts': typeof AdminPartsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/help' | '/admin/manufacturers'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/orders'
+    | '/parts'
+    | '/profile'
+    | '/projects'
+    | '/storage-bins'
+    | '/admin/manufacturers'
+    | '/admin/part-types'
+    | '/admin/parts'
+    | '/admin/settings'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/help' | '/admin/manufacturers'
-  id: '__root__' | '/' | '/about' | '/help' | '/admin/manufacturers'
+  to:
+    | '/'
+    | '/about'
+    | '/orders'
+    | '/parts'
+    | '/profile'
+    | '/projects'
+    | '/storage-bins'
+    | '/admin/manufacturers'
+    | '/admin/part-types'
+    | '/admin/parts'
+    | '/admin/settings'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/orders'
+    | '/parts'
+    | '/profile'
+    | '/projects'
+    | '/storage-bins'
+    | '/admin/manufacturers'
+    | '/admin/part-types'
+    | '/admin/parts'
+    | '/admin/settings'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  HelpRoute: typeof HelpRoute
+  OrdersRoute: typeof OrdersRoute
+  PartsRoute: typeof PartsRoute
+  ProfileRoute: typeof ProfileRoute
+  ProjectsRoute: typeof ProjectsRoute
+  StorageBinsRoute: typeof StorageBinsRoute
   AdminManufacturersRoute: typeof AdminManufacturersRoute
+  AdminPartTypesRoute: typeof AdminPartTypesRoute
+  AdminPartsRoute: typeof AdminPartsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/help': {
-      id: '/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof HelpRouteImport
+    '/storage-bins': {
+      id: '/storage-bins'
+      path: '/storage-bins'
+      fullPath: '/storage-bins'
+      preLoaderRoute: typeof StorageBinsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parts': {
+      id: '/parts'
+      path: '/parts'
+      fullPath: '/parts'
+      preLoaderRoute: typeof PartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -92,6 +237,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/parts': {
+      id: '/admin/parts'
+      path: '/admin/parts'
+      fullPath: '/admin/parts'
+      preLoaderRoute: typeof AdminPartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/part-types': {
+      id: '/admin/part-types'
+      path: '/admin/part-types'
+      fullPath: '/admin/part-types'
+      preLoaderRoute: typeof AdminPartTypesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/manufacturers': {
       id: '/admin/manufacturers'
       path: '/admin/manufacturers'
@@ -105,8 +278,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  HelpRoute: HelpRoute,
+  OrdersRoute: OrdersRoute,
+  PartsRoute: PartsRoute,
+  ProfileRoute: ProfileRoute,
+  ProjectsRoute: ProjectsRoute,
+  StorageBinsRoute: StorageBinsRoute,
   AdminManufacturersRoute: AdminManufacturersRoute,
+  AdminPartTypesRoute: AdminPartTypesRoute,
+  AdminPartsRoute: AdminPartsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

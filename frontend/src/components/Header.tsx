@@ -49,27 +49,40 @@ export default function Header() {
         </div>
 
         <div className="order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:order-2 sm:w-auto sm:flex-nowrap sm:pb-0">
-          <Link
-            to="/"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
-          >
+          <Link to="/" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
             Home
           </Link>
-          <Link
-            to="/about"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
-          >
+          
+          <Link to="/parts" className="nav-link"activeProps={{ className: 'nav-link is-active' }}>
+            Parts
+          </Link>
+
+          <Link to="/orders" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
+            Orders
+          </Link>
+
+          <Link to="/projects" className="nav-link"activeProps={{ className: 'nav-link is-active' }}>
+            Projects
+          </Link>
+
+          <Link to="/storage-bins" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
+            Storage
+          </Link>
+
+          <Link to="/profile" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
+            Profile
+          </Link>
+
+          <Link to="/about" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
             About
           </Link>
-          <a
-            href="https://tanstack.com/start/latest/docs/framework/react/overview"
-            className="nav-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Docs
+
+          <Link to="/admin" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
+            Admin
+          </Link>
+
+          <a href="https://tanstack.com/start/latest/docs/framework/react/overview"
+            className="nav-link" target="_blank" rel="noreferrer">Docs
           </a>
         </div>
       </nav>
