@@ -22,7 +22,20 @@ npm run build
 This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
 
 ```bash
-npm run test
+# Run the development server.
+pnpm run dev
+
+# Make a build.
+pnpm build
+
+# Run EsLint.
+npnm link
+
+# Make it pretty.
+pnpm format
+
+# Check and fix if problems are found.
+pnpm check
 ```
 
 ## Styling

@@ -1,8 +1,8 @@
 {
-  "projectName": "tan",
+  "projectName": "Vintage Parts",
   "mode": "file-router",
   "typescript": true,
-  "packageManager": "npm",
+  "packageManager": "pnpm",
   "includeExamples": false,
   "tailwind": true,
   "addOnOptions": {},
