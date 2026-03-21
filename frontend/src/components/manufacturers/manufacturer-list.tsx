@@ -1,13 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-
-// Define an interface for the REST API response JSON.
-interface Manufacturer {
-  manufacturerId: number;
-  manufacturerName: string;
-  manufacturerUrl: string;
-}
-
-type Manufacturers = Manufacturer[]
+import type { Manufacturers } from '#/interfaces/interfaces'
 
 export function ManufacturerList() {
     const { data, isPending, error } = useQuery<Manufacturers>({
