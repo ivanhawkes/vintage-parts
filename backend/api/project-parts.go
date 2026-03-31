@@ -76,8 +76,13 @@ func (Server) PostProjectParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_project_parts_create (%d, %d, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_project_parts_create (%d, %d, %d, %d);",
+		id,
 		entity.ProjectId,
 		entity.PartId,
 		entity.Quantity)

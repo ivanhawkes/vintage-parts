@@ -77,8 +77,13 @@ func (Server) PostPartTypes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_part_types_create (%d, '%s', '%s', '%s');",
+	query := fmt.Sprintf("SELECT * FROM cp_part_types_create (%d, %d, '%s', '%s', '%s');",
+		id,
 		entity.ParentId,
 		entity.ShortName,
 		entity.LongName,

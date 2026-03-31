@@ -83,12 +83,17 @@ func (Server) PostManufacturers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_manufacturers_create ('%s', %s, %s, %s);",
+	query := fmt.Sprintf("SELECT * FROM cp_manufacturers_create (%d, '%s', %s, %s, %s);",
+		id,
 		entity.ManufacturerName,
-		NullOrValue (entity.Description),
-		NullOrValue (entity.ManufacturerUrl),
-		NullOrValue (entity.Aliases))
+		NullOrValue(entity.Description),
+		NullOrValue(entity.ManufacturerUrl),
+		NullOrValue(entity.Aliases))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -290,8 +295,13 @@ func (Server) PostOrderParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_order_parts_create (%d, %d, %d, %g, '%s', '%s', '%s', %s);",
+	query := fmt.Sprintf("SELECT * FROM cp_order_parts_create (%d, %d, %d, %d, %g, '%s', '%s', '%s', %s);",
+		id,
 		entity.OrderId,
 		entity.PartId,
 		entity.Quantity,
@@ -299,7 +309,7 @@ func (Server) PostOrderParts(w http.ResponseWriter, r *http.Request) {
 		entity.SupplierPartNumber,
 		entity.ManufacturerPartNumber,
 		entity.ManufacturerName,
-		NullOrValue (entity.Description))
+		NullOrValue(entity.Description))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -503,8 +513,13 @@ func (Server) PostOrders(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_orders_create (%d, %d, %s, '%s', '%s', %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_orders_create (%d, %d, %d, %s, '%s', '%s', %d);",
+		id,
 		entity.UserId,
 		entity.SupplierId,
 		entity.OrderDate,
@@ -710,8 +725,13 @@ func (Server) PostPartTypes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_part_types_create (%d, '%s', '%s', '%s');",
+	query := fmt.Sprintf("SELECT * FROM cp_part_types_create (%d, %d, '%s', '%s', '%s');",
+		id,
 		entity.ParentId,
 		entity.ShortName,
 		entity.LongName,
@@ -917,16 +937,21 @@ func (Server) PostParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_parts_create (%d, '%s', %s, %s, %d, %s, %s, %s);",
-		NullOrValue (entity.PartTypeId),
+	query := fmt.Sprintf("SELECT * FROM cp_parts_create (%d, %d, '%s', %s, %s, %d, %s, %s, %s);",
+		id,
+		NullOrValue(entity.PartTypeId),
 		entity.PartNumber,
-		NullOrValue (entity.Series),
-		NullOrValue (entity.Description),
+		NullOrValue(entity.Series),
+		NullOrValue(entity.Description),
 		entity.ManufacturerId,
-		NullOrValue (entity.ProductUrl),
-		NullOrValue (entity.ImageUrl),
-		NullOrValue (entity.DatasheetUrl))
+		NullOrValue(entity.ProductUrl),
+		NullOrValue(entity.ImageUrl),
+		NullOrValue(entity.DatasheetUrl))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -1127,8 +1152,13 @@ func (Server) PostProjectParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_project_parts_create (%d, %d, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_project_parts_create (%d, %d, %d, %d);",
+		id,
 		entity.ProjectId,
 		entity.PartId,
 		entity.Quantity)
@@ -1328,12 +1358,17 @@ func (Server) PostProjects(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_projects_create (%d, '%s', '%s', %s);",
+	query := fmt.Sprintf("SELECT * FROM cp_projects_create (%d, %d, '%s', '%s', %s);",
+		id,
 		entity.UserId,
 		entity.ProjectName,
 		entity.Description,
-		NullOrValue (entity.Notes))
+		NullOrValue(entity.Notes))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -1534,15 +1569,20 @@ func (Server) PostStorageBins(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_storage_bins_create (%d, '%s', '%s', %s, %s, %d, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_storage_bins_create (%d, %d, '%s', '%s', %s, %s, %d, %d);",
+		id,
 		entity.UserId,
 		entity.ShortName,
 		entity.LongName,
-		NullOrValue (entity.Description),
-		NullOrValue (entity.Location),
-		NullOrValue (entity.MaxColumn),
-		NullOrValue (entity.MaxRow))
+		NullOrValue(entity.Description),
+		NullOrValue(entity.Location),
+		NullOrValue(entity.MaxColumn),
+		NullOrValue(entity.MaxRow))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)
@@ -1741,8 +1781,13 @@ func (Server) PostSuppliers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_suppliers_create ('%s', '%s');",
+	query := fmt.Sprintf("SELECT * FROM cp_suppliers_create (%d, '%s', '%s');",
+		id,
 		entity.SupplierName,
 		entity.BaseUrl)
 
@@ -1942,8 +1987,13 @@ func (Server) PostUserParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_user_parts_create (%d, %d, %d, %d, %d, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_user_parts_create (%d, %d, %d, %d, %d, %d, %d);",
+		id,
 		entity.UserId,
 		entity.PartId,
 		entity.StorageBinsId,
@@ -2149,12 +2199,17 @@ func (Server) PostUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_users_create ('%s', '%s', %s, %s);",
+	query := fmt.Sprintf("SELECT * FROM cp_users_create (%d, '%s', '%s', %s, %s);",
+		id,
 		entity.UserName,
 		entity.Email,
-		NullOrValue (entity.MouserApiKeyOrders),
-		NullOrValue (entity.MouserApiKeySearch))
+		NullOrValue(entity.MouserApiKeyOrders),
+		NullOrValue(entity.MouserApiKeySearch))
 
 	// Send it to the DB.
 	rows, err := global.DBPool.Query(context.Background(), query)

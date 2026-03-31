@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
+	"github.com/ivanhawkes/snowflake/strategy"
 	"github.com/ivanhawkes/vintage-parts/api"
 	"github.com/ivanhawkes/vintage-parts/global"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -40,6 +41,16 @@ func main() {
 	if err != nil {
 		global.Logs.Fatal("QUERY", zap.Error(err))
 	}
+
+	// Set the epoch to zero, the built-in default value will be used.
+	epoch := time.Time{}
+
+	// Create a pool of strategies to work with.
+	sp, err := strategy.NewStrategyPool(epoch, 24, 0, 16, global.Logs)
+	if err != nil {
+		global.Logs.Fatal("Failed to create a snowflake strategy pool.")
+	}
+	global.SPool = sp
 
 	// Create a new MUX server.
 	server := api.NewServer()

@@ -1,8 +1,9 @@
-﻿
+
+  
 DROP FUNCTION IF EXISTS cp_manufacturers_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -12,18 +13,20 @@ DROP FUNCTION IF EXISTS cp_manufacturers_create;
 */
 
 CREATE FUNCTION cp_manufacturers_create (
-	manufacturer_name VARCHAR (60), description VARCHAR (255), 
+	manufacturer_id BIGINT, manufacturer_name VARCHAR (60), description VARCHAR (255), 
 	manufacturer_url VARCHAR (255), aliases VARCHAR (255))
 RETURNS SETOF manufacturers AS
 
 $BODY$
 
 INSERT INTO manufacturers AS m (
+	manufacturer_id,
 	manufacturer_name,
 	description,
 	manufacturer_url,
 	aliases)
 VALUES (
+	cp_manufacturers_create.manufacturer_id,
 	cp_manufacturers_create.manufacturer_name,
 	cp_manufacturers_create.description,
 	cp_manufacturers_create.manufacturer_url,
@@ -40,7 +43,7 @@ GRANT EXECUTE ON FUNCTION cp_manufacturers_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_manufacturers_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -72,7 +75,7 @@ GRANT EXECUTE ON FUNCTION cp_manufacturers_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_manufacturers_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -100,7 +103,7 @@ GRANT EXECUTE ON FUNCTION cp_manufacturers_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_manufacturers_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -131,7 +134,7 @@ GRANT EXECUTE ON FUNCTION cp_manufacturers_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_manufacturers_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -161,7 +164,7 @@ GRANT EXECUTE ON FUNCTION cp_manufacturers_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_manufacturers_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -187,10 +190,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_manufacturers_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_order_parts_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -200,7 +204,7 @@ DROP FUNCTION IF EXISTS cp_order_parts_create;
 */
 
 CREATE FUNCTION cp_order_parts_create (
-	order_id BIGINT, part_id BIGINT, 
+	order_part_id BIGINT, order_id BIGINT, part_id BIGINT, 
 	quantity INT, unit_price REAL, supplier_part_number VARCHAR (32), 
 	manufacturer_part_number VARCHAR (32), manufacturer_name VARCHAR (60), description VARCHAR (255))
 RETURNS SETOF order_parts AS
@@ -208,6 +212,7 @@ RETURNS SETOF order_parts AS
 $BODY$
 
 INSERT INTO order_parts AS o (
+	order_part_id,
 	order_id,
 	part_id,
 	quantity,
@@ -217,6 +222,7 @@ INSERT INTO order_parts AS o (
 	manufacturer_name,
 	description)
 VALUES (
+	cp_order_parts_create.order_part_id,
 	cp_order_parts_create.order_id,
 	cp_order_parts_create.part_id,
 	cp_order_parts_create.quantity,
@@ -237,7 +243,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -274,7 +280,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -302,7 +308,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -333,7 +339,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -363,7 +369,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -392,7 +398,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_by_order_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -421,7 +427,7 @@ GRANT EXECUTE ON FUNCTION cp_order_parts_by_order_id_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_order_parts_by_part_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -447,10 +453,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_order_parts_by_part_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_orders_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -460,14 +467,15 @@ DROP FUNCTION IF EXISTS cp_orders_create;
 */
 
 CREATE FUNCTION cp_orders_create (
-	user_id BIGINT, supplier_id BIGINT, 
+	order_id BIGINT, user_id BIGINT, supplier_id BIGINT, 
 	order_date DATE, order_number VARCHAR (24), currency_code CHAR (3), 
-	status SMALLINT)
+	status order_status)
 RETURNS SETOF orders AS
 
 $BODY$
 
 INSERT INTO orders AS o (
+	order_id,
 	user_id,
 	supplier_id,
 	order_date,
@@ -475,6 +483,7 @@ INSERT INTO orders AS o (
 	currency_code,
 	status)
 VALUES (
+	cp_orders_create.order_id,
 	cp_orders_create.user_id,
 	cp_orders_create.supplier_id,
 	cp_orders_create.order_date,
@@ -493,7 +502,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -505,7 +514,7 @@ DROP FUNCTION IF EXISTS cp_orders_update;
 CREATE FUNCTION cp_orders_update (
 	order_id BIGINT, user_id BIGINT, supplier_id BIGINT, 
 	order_date DATE, order_number VARCHAR (24), currency_code CHAR (3), 
-	status SMALLINT)
+	status order_status)
 RETURNS SETOF orders AS
 
 $BODY$
@@ -528,7 +537,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -556,7 +565,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -587,7 +596,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -617,7 +626,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -646,7 +655,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_by_supplier_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -675,7 +684,7 @@ GRANT EXECUTE ON FUNCTION cp_orders_by_supplier_id_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_orders_by_user_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -701,10 +710,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_orders_by_user_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_part_types_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -714,18 +724,20 @@ DROP FUNCTION IF EXISTS cp_part_types_create;
 */
 
 CREATE FUNCTION cp_part_types_create (
-	parent_id INT, short_name VARCHAR (60), 
+	part_type_id BIGINT, parent_id INT, short_name VARCHAR (60), 
 	long_name VARCHAR (120), mouser_url VARCHAR (255))
 RETURNS SETOF part_types AS
 
 $BODY$
 
 INSERT INTO part_types AS p (
+	part_type_id,
 	parent_id,
 	short_name,
 	long_name,
 	mouser_url)
 VALUES (
+	cp_part_types_create.part_type_id,
 	cp_part_types_create.parent_id,
 	cp_part_types_create.short_name,
 	cp_part_types_create.long_name,
@@ -742,7 +754,7 @@ GRANT EXECUTE ON FUNCTION cp_part_types_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_part_types_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -774,7 +786,7 @@ GRANT EXECUTE ON FUNCTION cp_part_types_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_part_types_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -802,7 +814,7 @@ GRANT EXECUTE ON FUNCTION cp_part_types_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_part_types_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -833,7 +845,7 @@ GRANT EXECUTE ON FUNCTION cp_part_types_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_part_types_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -863,7 +875,7 @@ GRANT EXECUTE ON FUNCTION cp_part_types_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_part_types_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -889,10 +901,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_part_types_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_parts_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -902,7 +915,7 @@ DROP FUNCTION IF EXISTS cp_parts_create;
 */
 
 CREATE FUNCTION cp_parts_create (
-	part_type_id BIGINT, part_number VARCHAR (32), 
+	part_id BIGINT, part_type_id BIGINT, part_number VARCHAR (32), 
 	series VARCHAR (32), description VARCHAR (255), manufacturer_id BIGINT, 
 	product_url VARCHAR (255), image_url VARCHAR (255), datasheet_url VARCHAR (255))
 RETURNS SETOF parts AS
@@ -910,6 +923,7 @@ RETURNS SETOF parts AS
 $BODY$
 
 INSERT INTO parts AS p (
+	part_id,
 	part_type_id,
 	part_number,
 	series,
@@ -919,6 +933,7 @@ INSERT INTO parts AS p (
 	image_url,
 	datasheet_url)
 VALUES (
+	cp_parts_create.part_id,
 	cp_parts_create.part_type_id,
 	cp_parts_create.part_number,
 	cp_parts_create.series,
@@ -939,7 +954,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -976,7 +991,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -1004,7 +1019,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -1035,7 +1050,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -1065,7 +1080,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -1094,7 +1109,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_parts_by_manufacturer_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1123,7 +1138,7 @@ GRANT EXECUTE ON FUNCTION cp_parts_by_manufacturer_id_list TO vintage_parts_role
 DROP FUNCTION IF EXISTS cp_parts_by_part_type_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1149,10 +1164,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_parts_by_part_type_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_project_parts_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -1162,17 +1178,19 @@ DROP FUNCTION IF EXISTS cp_project_parts_create;
 */
 
 CREATE FUNCTION cp_project_parts_create (
-	project_id BIGINT, part_id BIGINT, 
+	project_part_id BIGINT, project_id BIGINT, part_id BIGINT, 
 	quantity INT)
 RETURNS SETOF project_parts AS
 
 $BODY$
 
 INSERT INTO project_parts AS p (
+	project_part_id,
 	project_id,
 	part_id,
 	quantity)
 VALUES (
+	cp_project_parts_create.project_part_id,
 	cp_project_parts_create.project_id,
 	cp_project_parts_create.part_id,
 	cp_project_parts_create.quantity)
@@ -1188,7 +1206,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -1219,7 +1237,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -1247,7 +1265,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -1278,7 +1296,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -1308,7 +1326,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -1336,7 +1354,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_project_parts_by_part_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1365,7 +1383,7 @@ GRANT EXECUTE ON FUNCTION cp_project_parts_by_part_id_list TO vintage_parts_role
 DROP FUNCTION IF EXISTS cp_project_parts_by_project_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1391,10 +1409,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_project_parts_by_project_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_projects_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -1404,18 +1423,20 @@ DROP FUNCTION IF EXISTS cp_projects_create;
 */
 
 CREATE FUNCTION cp_projects_create (
-	user_id BIGINT, project_name VARCHAR (60), 
+	project_id BIGINT, user_id BIGINT, project_name VARCHAR (60), 
 	description VARCHAR (255), notes TEXT)
 RETURNS SETOF projects AS
 
 $BODY$
 
 INSERT INTO projects AS p (
+	project_id,
 	user_id,
 	project_name,
 	description,
 	notes)
 VALUES (
+	cp_projects_create.project_id,
 	cp_projects_create.user_id,
 	cp_projects_create.project_name,
 	cp_projects_create.description,
@@ -1432,7 +1453,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -1464,7 +1485,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -1492,7 +1513,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -1523,7 +1544,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -1553,7 +1574,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -1582,7 +1603,7 @@ GRANT EXECUTE ON FUNCTION cp_projects_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_projects_by_user_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1608,10 +1629,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_projects_by_user_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_storage_bins_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -1621,7 +1643,7 @@ DROP FUNCTION IF EXISTS cp_storage_bins_create;
 */
 
 CREATE FUNCTION cp_storage_bins_create (
-	user_id BIGINT, short_name VARCHAR (60), 
+	storage_bin_id BIGINT, user_id BIGINT, short_name VARCHAR (60), 
 	long_name VARCHAR (120), description VARCHAR (255), location VARCHAR (80), 
 	max_column INT, max_row INT)
 RETURNS SETOF storage_bins AS
@@ -1629,6 +1651,7 @@ RETURNS SETOF storage_bins AS
 $BODY$
 
 INSERT INTO storage_bins AS s (
+	storage_bin_id,
 	user_id,
 	short_name,
 	long_name,
@@ -1637,6 +1660,7 @@ INSERT INTO storage_bins AS s (
 	max_column,
 	max_row)
 VALUES (
+	cp_storage_bins_create.storage_bin_id,
 	cp_storage_bins_create.user_id,
 	cp_storage_bins_create.short_name,
 	cp_storage_bins_create.long_name,
@@ -1656,7 +1680,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -1692,7 +1716,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -1720,7 +1744,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -1751,7 +1775,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -1781,7 +1805,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -1810,7 +1834,7 @@ GRANT EXECUTE ON FUNCTION cp_storage_bins_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_storage_bins_by_user_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -1836,10 +1860,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_storage_bins_by_user_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_suppliers_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -1849,15 +1874,17 @@ DROP FUNCTION IF EXISTS cp_suppliers_create;
 */
 
 CREATE FUNCTION cp_suppliers_create (
-	supplier_name VARCHAR (60), base_url VARCHAR (255))
+	supplier_id BIGINT, supplier_name VARCHAR (60), base_url VARCHAR (255))
 RETURNS SETOF suppliers AS
 
 $BODY$
 
 INSERT INTO suppliers AS s (
+	supplier_id,
 	supplier_name,
 	base_url)
 VALUES (
+	cp_suppliers_create.supplier_id,
 	cp_suppliers_create.supplier_name,
 	cp_suppliers_create.base_url)
 RETURNING *;
@@ -1872,7 +1899,7 @@ GRANT EXECUTE ON FUNCTION cp_suppliers_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_suppliers_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -1901,7 +1928,7 @@ GRANT EXECUTE ON FUNCTION cp_suppliers_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_suppliers_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -1929,7 +1956,7 @@ GRANT EXECUTE ON FUNCTION cp_suppliers_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_suppliers_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -1960,7 +1987,7 @@ GRANT EXECUTE ON FUNCTION cp_suppliers_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_suppliers_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -1990,7 +2017,7 @@ GRANT EXECUTE ON FUNCTION cp_suppliers_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_suppliers_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -2016,10 +2043,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_suppliers_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_user_parts_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -2029,7 +2057,7 @@ DROP FUNCTION IF EXISTS cp_user_parts_create;
 */
 
 CREATE FUNCTION cp_user_parts_create (
-	user_id BIGINT, part_id BIGINT, 
+	user_part_id BIGINT, user_id BIGINT, part_id BIGINT, 
 	storage_bins_id BIGINT, columnNumber INT, rowNumber INT, 
 	quantity INT)
 RETURNS SETOF user_parts AS
@@ -2037,6 +2065,7 @@ RETURNS SETOF user_parts AS
 $BODY$
 
 INSERT INTO user_parts AS u (
+	user_part_id,
 	user_id,
 	part_id,
 	storage_bins_id,
@@ -2044,6 +2073,7 @@ INSERT INTO user_parts AS u (
 	rowNumber,
 	quantity)
 VALUES (
+	cp_user_parts_create.user_part_id,
 	cp_user_parts_create.user_id,
 	cp_user_parts_create.part_id,
 	cp_user_parts_create.storage_bins_id,
@@ -2062,7 +2092,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -2097,7 +2127,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -2125,7 +2155,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -2156,7 +2186,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -2186,7 +2216,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -2214,7 +2244,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_by_part_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -2243,7 +2273,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_by_part_id_list TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_user_parts_by_storage_bins_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -2272,7 +2302,7 @@ GRANT EXECUTE ON FUNCTION cp_user_parts_by_storage_bins_id_list TO vintage_parts
 DROP FUNCTION IF EXISTS cp_user_parts_by_user_id_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		A query based on the foreign key relationships. This will bring back
@@ -2298,10 +2328,11 @@ LANGUAGE SQL;
 GRANT EXECUTE ON FUNCTION cp_user_parts_by_user_id_list TO vintage_parts_role;
 
 
+  
 DROP FUNCTION IF EXISTS cp_users_create;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Inserts a new record into the table.
@@ -2311,18 +2342,20 @@ DROP FUNCTION IF EXISTS cp_users_create;
 */
 
 CREATE FUNCTION cp_users_create (
-	user_name VARCHAR (24), email VARCHAR (60), 
+	user_id BIGINT, user_name VARCHAR (24), email VARCHAR (60), 
 	mouser_api_key_orders VARCHAR (128), mouser_api_key_search VARCHAR (128))
 RETURNS SETOF users AS
 
 $BODY$
 
 INSERT INTO users AS u (
+	user_id,
 	user_name,
 	email,
 	mouser_api_key_orders,
 	mouser_api_key_search)
 VALUES (
+	cp_users_create.user_id,
 	cp_users_create.user_name,
 	cp_users_create.email,
 	cp_users_create.mouser_api_key_orders,
@@ -2339,7 +2372,7 @@ GRANT EXECUTE ON FUNCTION cp_users_create TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_users_update;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Updates a record in the table using the primary key.
@@ -2371,7 +2404,7 @@ GRANT EXECUTE ON FUNCTION cp_users_update TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_users_delete;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Deletes a record from the table using the primary key.
@@ -2399,7 +2432,7 @@ GRANT EXECUTE ON FUNCTION cp_users_delete TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_users_read;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Returns a single record from the table.
@@ -2430,7 +2463,7 @@ GRANT EXECUTE ON FUNCTION cp_users_read TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_users_exists;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 	
 	Description:
 		Determines if a record exists which matches a foreign key passed
@@ -2460,7 +2493,7 @@ GRANT EXECUTE ON FUNCTION cp_users_exists TO vintage_parts_role;
 DROP FUNCTION IF EXISTS cp_users_list;
 
 /*
-	Auto generated: (18/03/2026 6:03:52 PM)
+	Auto generated: ()
 
 	Description:
 		Return a list of every record in the table. This can be very long and the
@@ -2484,4 +2517,5 @@ $BODY$
 LANGUAGE SQL;
 
 GRANT EXECUTE ON FUNCTION cp_users_list TO vintage_parts_role;
+
 

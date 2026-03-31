@@ -75,8 +75,13 @@ func (Server) PostSuppliers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_suppliers_create ('%s', '%s');",
+	query := fmt.Sprintf("SELECT * FROM cp_suppliers_create (%d, '%s', '%s');",
+		id,
 		entity.SupplierName,
 		entity.BaseUrl)
 

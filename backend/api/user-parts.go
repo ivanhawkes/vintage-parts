@@ -79,8 +79,13 @@ func (Server) PostUserParts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Get the next ID from the strategy pool using round robin.
+	st := global.SPool.Next()
+	id := st.NextID()
+
 	// Build a query.
-	query := fmt.Sprintf("SELECT * FROM cp_user_parts_create (%d, %d, %d, %d, %d, %d);",
+	query := fmt.Sprintf("SELECT * FROM cp_user_parts_create (%d, %d, %d, %d, %d, %d, %d);",
+		id,
 		entity.UserId,
 		entity.PartId,
 		entity.StorageBinsId,
