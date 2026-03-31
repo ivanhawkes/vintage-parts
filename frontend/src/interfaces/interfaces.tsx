@@ -3,6 +3,8 @@ export interface Manufacturer {
   manufacturerId: number;
   manufacturerName: string;
   manufacturerUrl: string;
+  aliases: string;
+  description: string;
 }
 
 export type Manufacturers = Manufacturer[]

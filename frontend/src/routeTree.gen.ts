@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StorageBinsRouteImport } from './routes/storage-bins'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PartsRouteImport } from './routes/parts'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as AboutRouteImport } from './routes/about'
@@ -36,6 +37,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartsRoute = PartsRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/orders': typeof OrdersRoute
   '/parts': typeof PartsRoute
+  '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/orders': typeof OrdersRoute
   '/parts': typeof PartsRoute
+  '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/orders': typeof OrdersRoute
   '/parts': typeof PartsRoute
+  '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/orders'
     | '/parts'
+    | '/payments'
     | '/profile'
     | '/projects'
     | '/storage-bins'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/orders'
     | '/parts'
+    | '/payments'
     | '/profile'
     | '/projects'
     | '/storage-bins'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/orders'
     | '/parts'
+    | '/payments'
     | '/profile'
     | '/projects'
     | '/storage-bins'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   OrdersRoute: typeof OrdersRoute
   PartsRoute: typeof PartsRoute
+  PaymentsRoute: typeof PaymentsRoute
   ProfileRoute: typeof ProfileRoute
   ProjectsRoute: typeof ProjectsRoute
   StorageBinsRoute: typeof StorageBinsRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parts': {
@@ -300,6 +320,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   OrdersRoute: OrdersRoute,
   PartsRoute: PartsRoute,
+  PaymentsRoute: PaymentsRoute,
   ProfileRoute: ProfileRoute,
   ProjectsRoute: ProjectsRoute,
   StorageBinsRoute: StorageBinsRoute,
