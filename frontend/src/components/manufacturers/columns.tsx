@@ -1,6 +1,7 @@
 'use client'
 
 import type { ColumnDef } from '@tanstack/react-table'
+import { ArrowUpDown } from 'lucide-react'
 import type { Manufacturer } from '#/interfaces/interfaces'
 import { Button } from '@/components/ui/button'
 import {
@@ -17,15 +18,35 @@ import { MoreHorizontal } from 'lucide-react'
 export const columns: ColumnDef<Manufacturer>[] = [
   // {
   //   accessorKey: 'manufacturerId',
-  //   header: 'ID',
+  //   header: 'Id',
   // },
   {
     accessorKey: 'manufacturerName',
-    header: 'Name',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: 'manufacturerUrl',
-    header: 'URL',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          URL
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   // {
   //   accessorKey: 'aliases',
@@ -43,13 +64,10 @@ export const columns: ColumnDef<Manufacturer>[] = [
 
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuTrigger
+            render={<Button variant="outline">...</Button>}
+          />
+          <DropdownMenuContent className="w-40" align="start">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem>Edit</DropdownMenuItem>

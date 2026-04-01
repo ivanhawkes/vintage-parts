@@ -11,7 +11,7 @@ export function Page() {
   })
 
   if (isPending) return <span>Loading...</span>
-  if (error) return <span>Oops!</span>
+  if (error) return <span>An error has occurred.</span>
 
   return (
     <div className="container mx-auto py-10">
