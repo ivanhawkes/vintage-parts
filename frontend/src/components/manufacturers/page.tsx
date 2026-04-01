@@ -1,7 +1,7 @@
-import { columns } from './columns'
-import type { Manufacturers } from '#/interfaces/interfaces'
-import { DataTable } from './data-table'
 import { useQuery } from '@tanstack/react-query'
+import type { Manufacturers } from '#/interfaces/interfaces'
+import { columns } from './columns'
+import { DataTable } from './data-table'
 
 export function Page() {
   const { data, isPending, error } = useQuery<Manufacturers>({
