@@ -1,13 +1,13 @@
-import { columns } from "./columns"
+import { columns } from './columns'
 import type { Manufacturers } from '#/interfaces/interfaces'
-import { DataTable } from "./data-table"
+import { DataTable } from './data-table'
 import { useQuery } from '@tanstack/react-query'
 
 export function Page() {
-    const { data, isPending, error } = useQuery<Manufacturers>({
+  const { data, isPending, error } = useQuery<Manufacturers>({
     queryKey: ['todos'],
-    queryFn: () => fetch('http://localhost:8080/manufacturers')
-        .then(r => r.json()),
+    queryFn: () =>
+      fetch('http://localhost:8080/manufacturers').then((r) => r.json()),
   })
 
   if (isPending) return <span>Loading...</span>

@@ -3,6 +3,8 @@
 import * as React from 'react'
 
 import { Input } from '@/components/ui/input'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { Link } from '@tanstack/react-router'
 
 import {
   type ColumnDef,
@@ -82,8 +84,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      {/* Input Filtering */}
-      <div className="flex items-center py-4">
+      <div className="flex py-2 justify-between">
         <Input
           placeholder="Filter by name..."
           value={
@@ -97,6 +98,13 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+        <Link
+          to="/admin/manufacturers/edit"
+          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          activeProps={{ className: 'nav-link is-active' }}
+        >
+          Add Manufacturer
+        </Link>
       </div>
 
       <div className="overflow-hidden rounded-md border">
@@ -154,7 +162,7 @@ export function DataTable<TData, TValue>({
       {/* <TablePagination /> */}
 
       <div>
-        <div className="flex w-full flex-wrap items-center justify-between gap-6 max-sm:justify-center">
+        <div className="flex py-2 justify-between text-sm">
           <div className="flex shrink-0 items-center gap-3">
             <Label>Rows per page</Label>
 
@@ -170,7 +178,9 @@ export function DataTable<TData, TValue>({
               </SelectTrigger>
               <SelectContent>
                 {[10, 15, 25, 50].map((pageSize) => (
-                  <SelectItem value={ pageSize } key={ pageSize }>{ pageSize }</SelectItem>
+                  <SelectItem value={pageSize} key={pageSize}>
+                    {pageSize}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -186,61 +196,64 @@ export function DataTable<TData, TValue>({
               </SelectTrigger>
               <SelectContent>
                 {pageList.map((page) => (
-                  <SelectItem value={ page } key={ page }>{ page }</SelectItem>
+                  <SelectItem value={page} key={page}>
+                    {page}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
+          <div>
+            <Pagination className="w-fit max-sm:mx-0">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationLink
+                    onClick={() => table.firstPage()}
+                    isActive={!table.getCanPreviousPage()}
+                    aria-label="Go to first page"
+                    size="icon"
+                    className="rounded"
+                  >
+                    <ChevronFirstIcon className="size-4" />
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink
+                    onClick={() => table.previousPage()}
+                    isActive={!table.getCanPreviousPage()}
+                    aria-label="Go to previous page"
+                    size="icon"
+                    className="rounded"
+                  >
+                    <ChevronLeftIcon className="size-4" />
+                  </PaginationLink>
+                </PaginationItem>
 
-          <Pagination className="w-fit max-sm:mx-0">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => table.firstPage()}
-                  isActive={!table.getCanPreviousPage()}
-                  aria-label="Go to first page"
-                  size="icon"
-                  className="rounded"
-                >
-                  <ChevronFirstIcon className="size-4" />
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => table.previousPage()}
-                  isActive={!table.getCanPreviousPage()}
-                  aria-label="Go to previous page"
-                  size="icon"
-                  className="rounded"
-                >
-                  <ChevronLeftIcon className="size-4" />
-                </PaginationLink>
-              </PaginationItem>
-
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => table.nextPage()}
-                  isActive={!table.getCanNextPage()}
-                  aria-label="Go to next page"
-                  size="icon"
-                  className="rounded"
-                >
-                  <ChevronRightIcon className="size-4" />
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => table.lastPage()}
-                  isActive={!table.getCanNextPage()}
-                  aria-label="Go to last page"
-                  size="icon"
-                  className="rounded"
-                >
-                  <ChevronLastIcon className="size-4" />
-                </PaginationLink>
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+                <PaginationItem>
+                  <PaginationLink
+                    onClick={() => table.nextPage()}
+                    isActive={!table.getCanNextPage()}
+                    aria-label="Go to next page"
+                    size="icon"
+                    className="rounded"
+                  >
+                    <ChevronRightIcon className="size-4" />
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink
+                    onClick={() => table.lastPage()}
+                    isActive={!table.getCanNextPage()}
+                    aria-label="Go to last page"
+                    size="icon"
+                    className="rounded"
+                  >
+                    <ChevronLastIcon className="size-4" />
+                  </PaginationLink>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
         </div>
       </div>
     </div>

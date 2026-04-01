@@ -53,7 +53,7 @@ export default function Header() {
             Home
           </Link>
           
-          <Link to="/parts" className="nav-link"activeProps={{ className: 'nav-link is-active' }}>
+          <Link to="/parts" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
             Parts
           </Link>
 
@@ -61,7 +61,7 @@ export default function Header() {
             Orders
           </Link>
 
-          <Link to="/projects" className="nav-link"activeProps={{ className: 'nav-link is-active' }}>
+          <Link to="/projects" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
             Projects
           </Link>
 
