@@ -99,7 +99,7 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         />
         <Link
-          to="/admin/manufacturers/edit"
+          to="/admin/manufacturers/create"
           className={buttonVariants({ variant: 'outline', size: 'lg' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
