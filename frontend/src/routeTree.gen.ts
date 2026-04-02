@@ -22,10 +22,10 @@ import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminPartsRouteImport } from './routes/admin/parts'
 import { Route as AdminPartTypesRouteImport } from './routes/admin/part-types'
 import { Route as AdminManufacturersListRouteImport } from './routes/admin/manufacturers/list'
-import { Route as AdminManufacturersEditRouteImport } from './routes/admin/manufacturers/edit'
-import { Route as AdminManufacturersDeleteRouteImport } from './routes/admin/manufacturers/delete'
 import { Route as AdminManufacturersCreateRouteImport } from './routes/admin/manufacturers/create'
 import { Route as AdminManufacturersViewManufacturerIdRouteImport } from './routes/admin/manufacturers/view.$manufacturerId'
+import { Route as AdminManufacturersEditManufacturerIdRouteImport } from './routes/admin/manufacturers/edit.$manufacturerId'
+import { Route as AdminManufacturersDeleteManufacturerIdRouteImport } from './routes/admin/manufacturers/delete.$manufacturerId'
 
 const StorageBinsRoute = StorageBinsRouteImport.update({
   id: '/storage-bins',
@@ -92,17 +92,6 @@ const AdminManufacturersListRoute = AdminManufacturersListRouteImport.update({
   path: '/admin/manufacturers/list',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminManufacturersEditRoute = AdminManufacturersEditRouteImport.update({
-  id: '/admin/manufacturers/edit',
-  path: '/admin/manufacturers/edit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminManufacturersDeleteRoute =
-  AdminManufacturersDeleteRouteImport.update({
-    id: '/admin/manufacturers/delete',
-    path: '/admin/manufacturers/delete',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const AdminManufacturersCreateRoute =
   AdminManufacturersCreateRouteImport.update({
     id: '/admin/manufacturers/create',
@@ -113,6 +102,18 @@ const AdminManufacturersViewManufacturerIdRoute =
   AdminManufacturersViewManufacturerIdRouteImport.update({
     id: '/admin/manufacturers/view/$manufacturerId',
     path: '/admin/manufacturers/view/$manufacturerId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminManufacturersEditManufacturerIdRoute =
+  AdminManufacturersEditManufacturerIdRouteImport.update({
+    id: '/admin/manufacturers/edit/$manufacturerId',
+    path: '/admin/manufacturers/edit/$manufacturerId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminManufacturersDeleteManufacturerIdRoute =
+  AdminManufacturersDeleteManufacturerIdRouteImport.update({
+    id: '/admin/manufacturers/delete/$manufacturerId',
+    path: '/admin/manufacturers/delete/$manufacturerId',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -130,9 +131,9 @@ export interface FileRoutesByFullPath {
   '/admin/users': typeof AdminUsersRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/delete': typeof AdminManufacturersDeleteRoute
-  '/admin/manufacturers/edit': typeof AdminManufacturersEditRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers/delete/$manufacturerId': typeof AdminManufacturersDeleteManufacturerIdRoute
+  '/admin/manufacturers/edit/$manufacturerId': typeof AdminManufacturersEditManufacturerIdRoute
   '/admin/manufacturers/view/$manufacturerId': typeof AdminManufacturersViewManufacturerIdRoute
 }
 export interface FileRoutesByTo {
@@ -149,9 +150,9 @@ export interface FileRoutesByTo {
   '/admin/users': typeof AdminUsersRoute
   '/admin': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/delete': typeof AdminManufacturersDeleteRoute
-  '/admin/manufacturers/edit': typeof AdminManufacturersEditRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers/delete/$manufacturerId': typeof AdminManufacturersDeleteManufacturerIdRoute
+  '/admin/manufacturers/edit/$manufacturerId': typeof AdminManufacturersEditManufacturerIdRoute
   '/admin/manufacturers/view/$manufacturerId': typeof AdminManufacturersViewManufacturerIdRoute
 }
 export interface FileRoutesById {
@@ -169,9 +170,9 @@ export interface FileRoutesById {
   '/admin/users': typeof AdminUsersRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/delete': typeof AdminManufacturersDeleteRoute
-  '/admin/manufacturers/edit': typeof AdminManufacturersEditRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers/delete/$manufacturerId': typeof AdminManufacturersDeleteManufacturerIdRoute
+  '/admin/manufacturers/edit/$manufacturerId': typeof AdminManufacturersEditManufacturerIdRoute
   '/admin/manufacturers/view/$manufacturerId': typeof AdminManufacturersViewManufacturerIdRoute
 }
 export interface FileRouteTypes {
@@ -190,9 +191,9 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin/'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/delete'
-    | '/admin/manufacturers/edit'
     | '/admin/manufacturers/list'
+    | '/admin/manufacturers/delete/$manufacturerId'
+    | '/admin/manufacturers/edit/$manufacturerId'
     | '/admin/manufacturers/view/$manufacturerId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -209,9 +210,9 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/delete'
-    | '/admin/manufacturers/edit'
     | '/admin/manufacturers/list'
+    | '/admin/manufacturers/delete/$manufacturerId'
+    | '/admin/manufacturers/edit/$manufacturerId'
     | '/admin/manufacturers/view/$manufacturerId'
   id:
     | '__root__'
@@ -228,9 +229,9 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin/'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/delete'
-    | '/admin/manufacturers/edit'
     | '/admin/manufacturers/list'
+    | '/admin/manufacturers/delete/$manufacturerId'
+    | '/admin/manufacturers/edit/$manufacturerId'
     | '/admin/manufacturers/view/$manufacturerId'
   fileRoutesById: FileRoutesById
 }
@@ -248,9 +249,9 @@ export interface RootRouteChildren {
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminManufacturersCreateRoute: typeof AdminManufacturersCreateRoute
-  AdminManufacturersDeleteRoute: typeof AdminManufacturersDeleteRoute
-  AdminManufacturersEditRoute: typeof AdminManufacturersEditRoute
   AdminManufacturersListRoute: typeof AdminManufacturersListRoute
+  AdminManufacturersDeleteManufacturerIdRoute: typeof AdminManufacturersDeleteManufacturerIdRoute
+  AdminManufacturersEditManufacturerIdRoute: typeof AdminManufacturersEditManufacturerIdRoute
   AdminManufacturersViewManufacturerIdRoute: typeof AdminManufacturersViewManufacturerIdRoute
 }
 
@@ -347,20 +348,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminManufacturersListRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/manufacturers/edit': {
-      id: '/admin/manufacturers/edit'
-      path: '/admin/manufacturers/edit'
-      fullPath: '/admin/manufacturers/edit'
-      preLoaderRoute: typeof AdminManufacturersEditRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/manufacturers/delete': {
-      id: '/admin/manufacturers/delete'
-      path: '/admin/manufacturers/delete'
-      fullPath: '/admin/manufacturers/delete'
-      preLoaderRoute: typeof AdminManufacturersDeleteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/manufacturers/create': {
       id: '/admin/manufacturers/create'
       path: '/admin/manufacturers/create'
@@ -373,6 +360,20 @@ declare module '@tanstack/react-router' {
       path: '/admin/manufacturers/view/$manufacturerId'
       fullPath: '/admin/manufacturers/view/$manufacturerId'
       preLoaderRoute: typeof AdminManufacturersViewManufacturerIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/manufacturers/edit/$manufacturerId': {
+      id: '/admin/manufacturers/edit/$manufacturerId'
+      path: '/admin/manufacturers/edit/$manufacturerId'
+      fullPath: '/admin/manufacturers/edit/$manufacturerId'
+      preLoaderRoute: typeof AdminManufacturersEditManufacturerIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/manufacturers/delete/$manufacturerId': {
+      id: '/admin/manufacturers/delete/$manufacturerId'
+      path: '/admin/manufacturers/delete/$manufacturerId'
+      fullPath: '/admin/manufacturers/delete/$manufacturerId'
+      preLoaderRoute: typeof AdminManufacturersDeleteManufacturerIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -392,9 +393,11 @@ const rootRouteChildren: RootRouteChildren = {
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminManufacturersCreateRoute: AdminManufacturersCreateRoute,
-  AdminManufacturersDeleteRoute: AdminManufacturersDeleteRoute,
-  AdminManufacturersEditRoute: AdminManufacturersEditRoute,
   AdminManufacturersListRoute: AdminManufacturersListRoute,
+  AdminManufacturersDeleteManufacturerIdRoute:
+    AdminManufacturersDeleteManufacturerIdRoute,
+  AdminManufacturersEditManufacturerIdRoute:
+    AdminManufacturersEditManufacturerIdRoute,
   AdminManufacturersViewManufacturerIdRoute:
     AdminManufacturersViewManufacturerIdRoute,
 }

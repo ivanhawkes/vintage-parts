@@ -16,7 +16,7 @@ export function View({ id }: { id: number }) {
 
   return (
     <div>
-      <ManufacturerFields m={data} isEnabled={false}></ManufacturerFields>
+      <ManufacturerFields m={data} isDisabled={ true }></ManufacturerFields>
       <div className="container mx-auto py-2">
         <Link
           to="/admin/manufacturers/list"

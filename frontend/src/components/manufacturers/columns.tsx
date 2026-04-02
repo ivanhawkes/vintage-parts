@@ -4,6 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
 import type { Manufacturer } from '#/interfaces/interfaces'
 import { Button } from '@/components/ui/button'
+import { Link, useParams } from '@tanstack/react-router'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { MoreHorizontal } from 'lucide-react'
 
 export const columns: ColumnDef<Manufacturer>[] = [
   // {
@@ -31,6 +31,15 @@ export const columns: ColumnDef<Manufacturer>[] = [
           Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      )
+    },
+    cell: ({ row }) => {
+      const m = row.original
+
+      return (
+        <Link className="nav-link" activeProps={{ className: 'nav-link is-active' }} to={'/admin/manufacturers/view/' + m.manufacturerId}>
+          {m.manufacturerName}
+        </Link>
       )
     },
   },

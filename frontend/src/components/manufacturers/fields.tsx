@@ -9,10 +9,10 @@ import { Input } from '@/components/ui/input'
 
 export function ManufacturerFields({
   m,
-  isEnabled,
+  isDisabled: isDisabled,
 }: {
   m: Manufacturer
-  isEnabled: boolean
+  isDisabled: boolean
 }) {
   return (
     <div className="container mx-auto py-2">
@@ -20,7 +20,7 @@ export function ManufacturerFields({
         <Field>
           <FieldLabel htmlFor="name">Name</FieldLabel>
           <Input
-            disabled={isEnabled ? false : true}
+            disabled={ isDisabled }
             id="name"
             autoComplete="off"
             placeholder={m.manufacturerName}
@@ -30,7 +30,7 @@ export function ManufacturerFields({
         <Field>
           <FieldLabel htmlFor="url">URL</FieldLabel>
           <Input
-            disabled={isEnabled ? false : true}
+            disabled={ isDisabled }
             id="url"
             autoComplete="off"
             placeholder={m.manufacturerUrl}
@@ -40,7 +40,7 @@ export function ManufacturerFields({
         <Field>
           <FieldLabel htmlFor="aliases">Aliases</FieldLabel>
           <Input
-            disabled={isEnabled ? false : true}
+            disabled={ isDisabled }
             id="aliases"
             autoComplete="off"
             placeholder={m.aliases}
@@ -52,7 +52,7 @@ export function ManufacturerFields({
         <Field>
           <FieldLabel htmlFor="description">Description</FieldLabel>
           <Input
-            disabled={isEnabled ? false : true}
+            disabled={ isDisabled }
             id="description"
             autoComplete="off"
             placeholder={m.description}
