@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { Input } from '@/components/ui/input'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
 import {
