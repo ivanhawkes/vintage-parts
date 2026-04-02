@@ -1,14 +1,45 @@
-import { useQuery } from '@tanstack/react-query'
-import type { Manufacturer } from '#/interfaces/interfaces'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+// import { useNavigate } from 'react-router-dom'
+import type { Manufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
 export function Edit({ id }: { id: number }) {
+  //   const navigate = useNavigate()
+  const queryClient = useQueryClient()
+
   const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['todos'],
+    queryKey: ['manufacturer-edit'],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
+  })
+
+  const putManufacturer = useMutation({
+    mutationFn: () =>
+      fetch('http://localhost:8080/manufacturers/' + id, {
+        method: 'PUT',
+        body: JSON.stringify({
+          manufacturerId: 1,
+          manufacturerName: 'Aardvark',
+          description: 'Product description',
+        }),
+      }),
+
+    onMutate: () => {
+      console.log('Before')
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit'] })
+      console.log('Success')
+      //   navigate('/')
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+      console.log('Settled')
+    },
   })
 
   if (isPending) return <span>Loading...</span>
@@ -16,22 +47,23 @@ export function Edit({ id }: { id: number }) {
 
   return (
     <div>
-      <ManufacturerFields m={data} isDisabled={ false }></ManufacturerFields>
+      <ManufacturerFields m={data} isDisabled={false}></ManufacturerFields>
       <div className="container mx-auto py-2">
         <Link
           to="/admin/manufacturers/list"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Cancel
         </Link>
-        <Link
-          to="/admin/manufacturers/list"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
-          activeProps={{ className: 'nav-link is-active' }}
+
+        <Button
+          onClick={() => {
+            putManufacturer.mutate()
+          }}
         >
           Save
-        </Link>
+        </Button>
       </div>
     </div>
   )

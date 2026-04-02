@@ -100,7 +100,7 @@ export function DataTable<TData, TValue>({
         />
         <Link
           to="/admin/manufacturers/create"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Add Manufacturer

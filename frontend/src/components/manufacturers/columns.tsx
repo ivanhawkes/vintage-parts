@@ -2,7 +2,7 @@
 
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
-import type { Manufacturer } from '#/interfaces/interfaces'
+import type { Manufacturer } from '#/api/interfaces'
 import { Button } from '@/components/ui/button'
 import { Link, useParams } from '@tanstack/react-router'
 import {

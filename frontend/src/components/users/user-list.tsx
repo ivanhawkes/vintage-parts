@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Users } from '#/interfaces/interfaces'
+import type { Users } from '#/api/interfaces'
 
 export function UserList() {
     const { data, isPending, error } = useQuery<Users>({
-    queryKey: ['todos'],
+    queryKey: ['manufacturer'],
     queryFn: () => fetch('http://localhost:8080/users')
         .then(r => r.json()),
   })

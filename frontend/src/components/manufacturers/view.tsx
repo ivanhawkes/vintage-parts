@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Manufacturer } from '#/interfaces/interfaces'
+import type { Manufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
 export function View({ id }: { id: number }) {
   const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['todos'],
+    queryKey: ['manufacturer'],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
   })
@@ -20,21 +20,21 @@ export function View({ id }: { id: number }) {
       <div className="container mx-auto py-2">
         <Link
           to="/admin/manufacturers/list"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Cancel
         </Link>
         <Link
           to="/admin/manufacturers/list"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Delete
         </Link>
         <Link
           to="/admin/manufacturers/list"
-          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Edit

@@ -1,4 +1,4 @@
-import type { Manufacturer } from '#/interfaces/interfaces'
+import type { Manufacturer } from '#/api/interfaces'
 import {
   Field,
   FieldDescription,

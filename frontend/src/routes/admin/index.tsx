@@ -6,7 +6,7 @@ export const Route = createFileRoute('/admin/')({
 
 function RouteComponent() {
   return (
-    <>
+    <div className="flex py-2">
       <Link to="/admin/manufacturers/list" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
         Manufacturers
       </Link>
@@ -18,6 +18,6 @@ function RouteComponent() {
       <Link to="/admin/part-types" className="nav-link" activeProps={{ className: 'nav-link is-active' }}>
         Part Types
       </Link>
-    </>
+    </div>
   )
 }

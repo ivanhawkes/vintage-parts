@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Manufacturers } from '#/interfaces/interfaces'
+import type { Manufacturers } from '#/api/interfaces'
 import { columns } from './columns'
 import { DataTable } from './data-table'
 
 export function Page() {
   const { data, isPending, error } = useQuery<Manufacturers>({
-    queryKey: ['todos'],
+    queryKey: ['manufacturer'],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers').then((r) => r.json()),
   })
