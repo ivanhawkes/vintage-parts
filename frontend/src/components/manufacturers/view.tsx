@@ -16,8 +16,8 @@ export function View({ id }: { id: number }) {
 
   return (
     <div>
-      <ManufacturerFields m={data} isDisabled={ true }></ManufacturerFields>
-      <div className="container mx-auto py-2">
+      <ManufacturerFields m={data} isDisabled={true}></ManufacturerFields>
+      <div className="container mx-auto">
         <Link
           to="/admin/manufacturers/list"
           className={buttonVariants({ variant: 'outline' })}
@@ -33,7 +33,7 @@ export function View({ id }: { id: number }) {
           Delete
         </Link>
         <Link
-          to="/admin/manufacturers/list"
+          to={'/admin/manufacturers/' + id + '/edit'}
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >

@@ -7,6 +7,14 @@ export interface Manufacturer {
   description: string;
 }
 
+export const ManufacturerEmpty : Manufacturer = {
+  manufacturerId: -1,
+  manufacturerName: "",
+  manufacturerUrl: "",
+  aliases: "",
+  description: "",
+}
+
 export type Manufacturers = Manufacturer[]
 
 // Users

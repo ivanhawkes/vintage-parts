@@ -1,29 +1,23 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 // import { useNavigate } from 'react-router-dom'
-import type { Manufacturer } from '#/api/interfaces'
+import { type Manufacturer, ManufacturerEmpty } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
-export function Edit({ id }: { id: number }) {
+export function Create() {
   //   const navigate = useNavigate()
   const queryClient = useQueryClient()
-
-  const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['manufacturer-edit'],
-    queryFn: () =>
-      fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
-  })
-
-  const putManufacturer = useMutation({
+  
+  const postManufacturer = useMutation({
     mutationFn: () =>
-      fetch('http://localhost:8080/manufacturers/' + id, {
-        method: 'PUT',
+      fetch('http://localhost:8080/manufacturers', {
+        method: 'POST',
         body: JSON.stringify({
-          "manufacturerId": -3,
-          "manufacturerName": "Haardvark",
-          "manufacturerUrl": "https://www.hard.com",
-          "description": "Life is hard."
+          "manufacturerId": -1,
+          "manufacturerName": "Baardvark",
+          "manufacturerUrl": "https://www.bard.com",
+          "description": "He is a bad vark"
         }),
       }),
 
@@ -32,7 +26,7 @@ export function Edit({ id }: { id: number }) {
     },
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit'] })
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
       console.log('Success')
       //   navigate('/')
     },
@@ -43,12 +37,9 @@ export function Edit({ id }: { id: number }) {
     },
   })
 
-  if (isPending) return <span>Loading...</span>
-  if (error) return <span>An error has occurred.</span>
-
   return (
     <div>
-      <ManufacturerFields m={data} isDisabled={false}></ManufacturerFields>
+      <ManufacturerFields m={ ManufacturerEmpty } isDisabled={false}></ManufacturerFields>
       <div className="container mx-auto py-2">
         <Link
           to="/admin/manufacturers/list"
@@ -60,7 +51,7 @@ export function Edit({ id }: { id: number }) {
 
         <Button
           onClick={() => {
-            putManufacturer.mutate()
+            postManufacturer.mutate()
           }}
         >
           Save

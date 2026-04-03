@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { View } from '#/components/manufacturers/view'
 
 export const Route = createFileRoute(
-  '/admin/manufacturers/view/$manufacturerId',
+  '/admin/manufacturers/$manufacturerId/view',
 )({
   component: RouteComponent,
 })

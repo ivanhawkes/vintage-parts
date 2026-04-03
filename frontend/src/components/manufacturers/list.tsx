@@ -3,7 +3,7 @@ import type { Manufacturers } from '#/api/interfaces'
 import { columns } from './columns'
 import { DataTable } from './data-table'
 
-export function Page() {
+export function List() {
   const { data, isPending, error } = useQuery<Manufacturers>({
     queryKey: ['manufacturer'],
     queryFn: () =>

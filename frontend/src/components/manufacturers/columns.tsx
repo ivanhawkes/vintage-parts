@@ -37,7 +37,7 @@ export const columns: ColumnDef<Manufacturer>[] = [
       const m = row.original
 
       return (
-        <Link className="nav-link" activeProps={{ className: 'nav-link is-active' }} to={'/admin/manufacturers/view/' + m.manufacturerId}>
+        <Link className="nav-link" activeProps={{ className: 'nav-link is-active' }} to={'/admin/manufacturers/' + m.manufacturerId + '/view'}>
           {m.manufacturerName}
         </Link>
       )
