@@ -10,38 +10,51 @@ export function Edit({ id }: { id: number }) {
   const queryClient = useQueryClient()
 
   const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['manufacturer-edit'],
+    queryKey: ['manufacturer-edit', id],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
   })
 
   const putManufacturer = useMutation({
-    mutationFn: () =>
+    mutationFn: (newManufacturer: Manufacturer) =>
       fetch('http://localhost:8080/manufacturers/' + id, {
         method: 'PUT',
-        body: JSON.stringify({
-          "manufacturerId": -3,
-          "manufacturerName": "Haardvark",
-          "manufacturerUrl": "https://www.hard.com",
-          "description": "Life is hard."
-        }),
+        body: JSON.stringify(newManufacturer),
       }),
 
     onMutate: () => {
-      console.log('Before')
+      console.log('Mutate')
     },
 
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit'] })
-      console.log('Success')
+    onSuccess: (data) => {
+      console.log(data)
       //   navigate('/')
     },
 
+    // 3. On error - Rollback
+    onError: (error, variables, context) => {
+      console.log('Error')
+      // queryClient.setQueryData(['todos'], context.previousTodos)
+      // toast.error('Failed to add todo')
+    },
+
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos'] })
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit', id] })
       console.log('Settled')
     },
   })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newManufacturer: Manufacturer = {
+      manufacturerId: -3,
+      manufacturerName: 'Haardvark',
+      manufacturerUrl: 'https://www.hard.com',
+      description: 'Life is hard.',
+      aliases: '',
+    }
+    putManufacturer.mutate(newManufacturer)
+  }
 
   if (isPending) return <span>Loading...</span>
   if (error) return <span>An error has occurred.</span>
@@ -57,14 +70,9 @@ export function Edit({ id }: { id: number }) {
         >
           Cancel
         </Link>
-
-        <Button
-          onClick={() => {
-            putManufacturer.mutate()
-          }}
-        >
-          Save
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <Button type="submit">Save</Button>
+        </form>
       </div>
     </div>
   )

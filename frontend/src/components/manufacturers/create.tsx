@@ -22,17 +22,17 @@ export function Create() {
       }),
 
     onMutate: () => {
-      console.log('Before')
+      console.log('xBefore')
     },
 
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
-      console.log('Success')
+      console.log(data)
       //   navigate('/')
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos'] })
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
       console.log('Settled')
     },
   })
