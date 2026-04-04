@@ -23,7 +23,7 @@ export function Delete({ id: manufacturerId }: { id: number }) {
     mutationKey: manufacturerQueryKeys.detail(manufacturerId),
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-delete'] })
+      queryClient.invalidateQueries({ queryKey: manufacturerQueryKeys.detail(manufacturerId) })
     },
   })
 

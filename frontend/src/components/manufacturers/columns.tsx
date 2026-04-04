@@ -5,6 +5,7 @@ import { ArrowUpDown } from 'lucide-react'
 import type { Manufacturer } from '#/api/interfaces'
 import { Button } from '@/components/ui/button'
 import { Link, useParams } from '@tanstack/react-router'
+import { Router, useNavigate } from '@tanstack/react-router'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Route } from '#/routes/admin/manufacturers/create'
 
 export const columns: ColumnDef<Manufacturer>[] = [
   // {
@@ -37,7 +39,11 @@ export const columns: ColumnDef<Manufacturer>[] = [
       const m = row.original
 
       return (
-        <Link className="nav-link" activeProps={{ className: 'nav-link is-active' }} to={'/admin/manufacturers/' + m.manufacturerId + '/view'}>
+        <Link
+          className="nav-link"
+          activeProps={{ className: 'nav-link is-active' }}
+          to={'/admin/manufacturers/' + m.manufacturerId + '/view'}
+        >
           {m.manufacturerName}
         </Link>
       )
@@ -57,19 +63,39 @@ export const columns: ColumnDef<Manufacturer>[] = [
       )
     },
   },
-  // {
-  //   accessorKey: 'aliases',
-  //   header: 'Aliases',
-  // },
-  // {
-  //   accessorKey: 'description',
-  //   header: 'Description',
-  // },
   {
     header: 'Action',
     id: 'actions',
     cell: ({ row }) => {
       const m = row.original
+      const navigate = useNavigate()
+
+      const handleClickEdit = () => {
+        // navigate({
+        //   to: '/admin/manufacturers/$manufacturerId/edit',
+        //   params: { manufacturerId: `${m.manufacturerId}` },
+        // })
+      }
+
+      const handleClickDelete = () => {
+        // navigate({
+        //   to: '/admin/manufacturers/$manufacturerId/delete',
+        //   params: { manufacturerId: `${m.manufacturerId}` },
+        // })
+      }
+
+      const handleClickView = () => {
+        navigate({
+          to: '/admin/manufacturers/$manufacturerId/view',
+          params: { manufacturerId: `${m.manufacturerId}` },
+        })
+      }
+
+      const handleClickCreate = () => {
+        navigate({
+          to: '/admin/manufacturers/create',
+        })
+      }
 
       return (
         <DropdownMenu>
@@ -79,16 +105,17 @@ export const columns: ColumnDef<Manufacturer>[] = [
           <DropdownMenuContent className="w-40" align="start">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Delete</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={() =>
-                  navigator.clipboard.writeText(m.manufacturerName)
-                }
-              >
-                Copy Name
+              <DropdownMenuItem onClick={handleClickEdit}>
+                Edit
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleClickDelete}>
+                Delete
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleClickView}>
+                View
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleClickCreate}>
+                Create
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
