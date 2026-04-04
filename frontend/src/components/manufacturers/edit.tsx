@@ -33,21 +33,19 @@ export function Edit({ id }: { id: number }) {
 
     // 3. On error - Rollback
     onError: (error, variables, context) => {
-      console.log('Error')
       // queryClient.setQueryData(['todos'], context.previousTodos)
       // toast.error('Failed to add todo')
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-edit', id] })
-      console.log('Settled')
     },
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const newManufacturer: Manufacturer = {
-      manufacturerId: -3,
+      manufacturerId: -4,
       manufacturerName: 'Haardvark',
       manufacturerUrl: 'https://www.hard.com',
       description: 'Life is hard.',

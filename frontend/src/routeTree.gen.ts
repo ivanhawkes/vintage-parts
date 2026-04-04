@@ -17,10 +17,10 @@ import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as AdminUsersRouteImport } from './routes/admin/users'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
-import { Route as AdminPartsRouteImport } from './routes/admin/parts'
-import { Route as AdminPartTypesRouteImport } from './routes/admin/part-types'
+import { Route as AdminUsersIndexRouteImport } from './routes/admin/users/index'
+import { Route as AdminPartsIndexRouteImport } from './routes/admin/parts/index'
+import { Route as AdminPartTypesIndexRouteImport } from './routes/admin/part-types/index'
 import { Route as AdminManufacturersListRouteImport } from './routes/admin/manufacturers/list'
 import { Route as AdminManufacturersCreateRouteImport } from './routes/admin/manufacturers/create'
 import { Route as AdminManufacturersManufacturerIdViewRouteImport } from './routes/admin/manufacturers/$manufacturerId.view'
@@ -67,24 +67,24 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminUsersRoute = AdminUsersRouteImport.update({
-  id: '/admin/users',
-  path: '/admin/users',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminSettingsRoute = AdminSettingsRouteImport.update({
   id: '/admin/settings',
   path: '/admin/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminPartsRoute = AdminPartsRouteImport.update({
-  id: '/admin/parts',
-  path: '/admin/parts',
+const AdminUsersIndexRoute = AdminUsersIndexRouteImport.update({
+  id: '/admin/users/',
+  path: '/admin/users/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminPartTypesRoute = AdminPartTypesRouteImport.update({
-  id: '/admin/part-types',
-  path: '/admin/part-types',
+const AdminPartsIndexRoute = AdminPartsIndexRouteImport.update({
+  id: '/admin/parts/',
+  path: '/admin/parts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPartTypesIndexRoute = AdminPartTypesIndexRouteImport.update({
+  id: '/admin/part-types/',
+  path: '/admin/part-types/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminManufacturersListRoute = AdminManufacturersListRouteImport.update({
@@ -125,13 +125,13 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
-  '/admin/part-types': typeof AdminPartTypesRoute
-  '/admin/parts': typeof AdminPartsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/users': typeof AdminUsersRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/part-types/': typeof AdminPartTypesIndexRoute
+  '/admin/parts/': typeof AdminPartsIndexRoute
+  '/admin/users/': typeof AdminUsersIndexRoute
   '/admin/manufacturers/$manufacturerId/delete': typeof AdminManufacturersManufacturerIdDeleteRoute
   '/admin/manufacturers/$manufacturerId/edit': typeof AdminManufacturersManufacturerIdEditRoute
   '/admin/manufacturers/$manufacturerId/view': typeof AdminManufacturersManufacturerIdViewRoute
@@ -144,13 +144,13 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
-  '/admin/part-types': typeof AdminPartTypesRoute
-  '/admin/parts': typeof AdminPartsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/users': typeof AdminUsersRoute
   '/admin': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/part-types': typeof AdminPartTypesIndexRoute
+  '/admin/parts': typeof AdminPartsIndexRoute
+  '/admin/users': typeof AdminUsersIndexRoute
   '/admin/manufacturers/$manufacturerId/delete': typeof AdminManufacturersManufacturerIdDeleteRoute
   '/admin/manufacturers/$manufacturerId/edit': typeof AdminManufacturersManufacturerIdEditRoute
   '/admin/manufacturers/$manufacturerId/view': typeof AdminManufacturersManufacturerIdViewRoute
@@ -164,13 +164,13 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/projects': typeof ProjectsRoute
   '/storage-bins': typeof StorageBinsRoute
-  '/admin/part-types': typeof AdminPartTypesRoute
-  '/admin/parts': typeof AdminPartsRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/users': typeof AdminUsersRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
   '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/part-types/': typeof AdminPartTypesIndexRoute
+  '/admin/parts/': typeof AdminPartsIndexRoute
+  '/admin/users/': typeof AdminUsersIndexRoute
   '/admin/manufacturers/$manufacturerId/delete': typeof AdminManufacturersManufacturerIdDeleteRoute
   '/admin/manufacturers/$manufacturerId/edit': typeof AdminManufacturersManufacturerIdEditRoute
   '/admin/manufacturers/$manufacturerId/view': typeof AdminManufacturersManufacturerIdViewRoute
@@ -185,13 +185,13 @@ export interface FileRouteTypes {
     | '/profile'
     | '/projects'
     | '/storage-bins'
-    | '/admin/part-types'
-    | '/admin/parts'
     | '/admin/settings'
-    | '/admin/users'
     | '/admin/'
     | '/admin/manufacturers/create'
     | '/admin/manufacturers/list'
+    | '/admin/part-types/'
+    | '/admin/parts/'
+    | '/admin/users/'
     | '/admin/manufacturers/$manufacturerId/delete'
     | '/admin/manufacturers/$manufacturerId/edit'
     | '/admin/manufacturers/$manufacturerId/view'
@@ -204,13 +204,13 @@ export interface FileRouteTypes {
     | '/profile'
     | '/projects'
     | '/storage-bins'
-    | '/admin/part-types'
-    | '/admin/parts'
     | '/admin/settings'
-    | '/admin/users'
     | '/admin'
     | '/admin/manufacturers/create'
     | '/admin/manufacturers/list'
+    | '/admin/part-types'
+    | '/admin/parts'
+    | '/admin/users'
     | '/admin/manufacturers/$manufacturerId/delete'
     | '/admin/manufacturers/$manufacturerId/edit'
     | '/admin/manufacturers/$manufacturerId/view'
@@ -223,13 +223,13 @@ export interface FileRouteTypes {
     | '/profile'
     | '/projects'
     | '/storage-bins'
-    | '/admin/part-types'
-    | '/admin/parts'
     | '/admin/settings'
-    | '/admin/users'
     | '/admin/'
     | '/admin/manufacturers/create'
     | '/admin/manufacturers/list'
+    | '/admin/part-types/'
+    | '/admin/parts/'
+    | '/admin/users/'
     | '/admin/manufacturers/$manufacturerId/delete'
     | '/admin/manufacturers/$manufacturerId/edit'
     | '/admin/manufacturers/$manufacturerId/view'
@@ -243,13 +243,13 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   ProjectsRoute: typeof ProjectsRoute
   StorageBinsRoute: typeof StorageBinsRoute
-  AdminPartTypesRoute: typeof AdminPartTypesRoute
-  AdminPartsRoute: typeof AdminPartsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
-  AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminManufacturersCreateRoute: typeof AdminManufacturersCreateRoute
   AdminManufacturersListRoute: typeof AdminManufacturersListRoute
+  AdminPartTypesIndexRoute: typeof AdminPartTypesIndexRoute
+  AdminPartsIndexRoute: typeof AdminPartsIndexRoute
+  AdminUsersIndexRoute: typeof AdminUsersIndexRoute
   AdminManufacturersManufacturerIdDeleteRoute: typeof AdminManufacturersManufacturerIdDeleteRoute
   AdminManufacturersManufacturerIdEditRoute: typeof AdminManufacturersManufacturerIdEditRoute
   AdminManufacturersManufacturerIdViewRoute: typeof AdminManufacturersManufacturerIdViewRoute
@@ -313,13 +313,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/users': {
-      id: '/admin/users'
-      path: '/admin/users'
-      fullPath: '/admin/users'
-      preLoaderRoute: typeof AdminUsersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/settings': {
       id: '/admin/settings'
       path: '/admin/settings'
@@ -327,18 +320,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/parts': {
-      id: '/admin/parts'
-      path: '/admin/parts'
-      fullPath: '/admin/parts'
-      preLoaderRoute: typeof AdminPartsRouteImport
+    '/admin/users/': {
+      id: '/admin/users/'
+      path: '/admin/users'
+      fullPath: '/admin/users/'
+      preLoaderRoute: typeof AdminUsersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/part-types': {
-      id: '/admin/part-types'
+    '/admin/parts/': {
+      id: '/admin/parts/'
+      path: '/admin/parts'
+      fullPath: '/admin/parts/'
+      preLoaderRoute: typeof AdminPartsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/part-types/': {
+      id: '/admin/part-types/'
       path: '/admin/part-types'
-      fullPath: '/admin/part-types'
-      preLoaderRoute: typeof AdminPartTypesRouteImport
+      fullPath: '/admin/part-types/'
+      preLoaderRoute: typeof AdminPartTypesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/manufacturers/list': {
@@ -387,13 +387,13 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   ProjectsRoute: ProjectsRoute,
   StorageBinsRoute: StorageBinsRoute,
-  AdminPartTypesRoute: AdminPartTypesRoute,
-  AdminPartsRoute: AdminPartsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
-  AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminManufacturersCreateRoute: AdminManufacturersCreateRoute,
   AdminManufacturersListRoute: AdminManufacturersListRoute,
+  AdminPartTypesIndexRoute: AdminPartTypesIndexRoute,
+  AdminPartsIndexRoute: AdminPartsIndexRoute,
+  AdminUsersIndexRoute: AdminUsersIndexRoute,
   AdminManufacturersManufacturerIdDeleteRoute:
     AdminManufacturersManufacturerIdDeleteRoute,
   AdminManufacturersManufacturerIdEditRoute:
