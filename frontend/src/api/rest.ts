@@ -10,26 +10,40 @@ export const restApi = axios.create({
   },
 })
 
-// Create a POST function to access the REST API.
+// GET
+export const getManufacturer = async (id: number) => {
+  const { data } = await restApi.get(`/manufacturers/${id}`)
+
+  return data
+}
+
+// POST
 export const postManufacturer = async (newManufacturer: Manufacturer) => {
   const { data } = await restApi.post('/manufacturers', newManufacturer)
 
   return data
 }
 
-// Create a DELETE function to access the REST API.
+// PUT
+export const putManufacturer = async (newManufacturer: Manufacturer) => {
+  const { data } = await restApi.put(
+    `/manufacturers/${newManufacturer.manufacturerId}`,
+    newManufacturer,
+  )
+
+  return data
+}
+
+// DELETE
 export const deleteManufacturer = async (id: number) => {
   await restApi.delete(`/manufacturers/${id}`)
 
   return id
 }
 
-// Create a PUT function to access the REST API.
-export const putManufacturer = async (newManufacturer: Manufacturer) => {
-  const { data } = await restApi.put(
-    `/manufacturers/${newManufacturer.manufacturerId}`,
-    newManufacturer,
-  )
+// GET (all)
+export const getAllManufacturer = async () => {
+  const { data } = await restApi.get('/manufacturers')
 
   return data
 }
