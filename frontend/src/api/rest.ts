@@ -7,7 +7,9 @@ import { type Manufacturer, type Manufacturers } from '#/api/interfaces'
 
 export const manufacturerQueryKeys = {
   all: ['manufacturer'],
-  details: () => [...manufacturerQueryKeys.all, 'detail'],
+  lists: () => [...manufacturerQueryKeys.all, 'list'] as const,
+  list: (filters: string) =>
+    [...manufacturerQueryKeys.lists(), { filters }] as const,  details: () => [...manufacturerQueryKeys.all, 'detail'],
   detail: (id: number) => [...manufacturerQueryKeys.details(), id],
   pagination: (page: number) => [
     ...manufacturerQueryKeys.all,

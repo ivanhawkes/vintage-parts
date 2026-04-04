@@ -1,6 +1,6 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { defaultManufacturer } from '#/api/interfaces'
-import { postManufacturer } from '#/api/rest'
+import { postManufacturer, manufacturerQueryKeys } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
@@ -11,6 +11,7 @@ export function Create() {
   // Use a mutation to handle the 'POST' request.
   const mutation = useMutation({
     mutationFn: postManufacturer,
+    mutationKey:  manufacturerQueryKeys.all,
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })

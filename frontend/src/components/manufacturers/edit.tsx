@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { type Manufacturer } from '#/api/interfaces'
-import { putManufacturer } from '#/api/rest'
+import { putManufacturer, manufacturerQueryKeys } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
@@ -11,6 +11,7 @@ export function Edit({ id: manufacturerId }: { id: number }) {
   // Use a mutation to handle the 'PUT' request.
   const mutation = useMutation({
     mutationFn: putManufacturer,
+    mutationKey: manufacturerQueryKeys.detail(manufacturerId),
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-edit'] })

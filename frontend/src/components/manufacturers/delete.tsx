@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { type Manufacturer } from '#/api/interfaces'
-import { deleteManufacturer } from '#/api/rest'
+import { deleteManufacturer, manufacturerQueryKeys } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
@@ -11,6 +11,7 @@ export function Delete({ id: manufacturerId }: { id: number }) {
   // Use a mutation to handle the 'DELETE' request.
   const deleteMutation = useMutation({
     mutationFn: deleteManufacturer,
+    mutationKey: manufacturerQueryKeys.detail(manufacturerId),
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-delete'] })

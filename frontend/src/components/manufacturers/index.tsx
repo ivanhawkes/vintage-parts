@@ -7,7 +7,7 @@ import { DataTable } from './data-table'
 export function List() {
   // GET
   const { data, isPending, error } = useQuery({
-    queryKey: manufacturerQueryKeys.all,
+    queryKey: manufacturerQueryKeys.lists(),
     queryFn: () => getAllManufacturer(),
   })
 
