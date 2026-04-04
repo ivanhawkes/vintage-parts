@@ -1,5 +1,21 @@
 import axios from 'axios'
-import { type Manufacturer } from '#/api/interfaces'
+import { type Manufacturer, type Manufacturers } from '#/api/interfaces'
+
+// Effective React Query Keys
+// https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
+// https://tkdodo.eu/blog/leveraging-the-query-function-context#query-key-factories
+
+export const manufacturerQueryKeys = {
+  all: ['manufacturer'],
+  details: () => [...manufacturerQueryKeys.all, 'detail'],
+  detail: (id: number) => [...manufacturerQueryKeys.details(), id],
+  pagination: (page: number) => [
+    ...manufacturerQueryKeys.all,
+    'pagination',
+    page,
+  ],
+  infinite: () => [...manufacturerQueryKeys.all, 'infinite'],
+}
 
 export const restApi = axios.create({
   // TODO: Needs to be an .env variable.
@@ -11,21 +27,25 @@ export const restApi = axios.create({
 })
 
 // GET
-export const getManufacturer = async (id: number) => {
+export const getManufacturer = async (id: number): Promise<Manufacturer> => {
   const { data } = await restApi.get(`/manufacturers/${id}`)
 
   return data
 }
 
 // POST
-export const postManufacturer = async (newManufacturer: Manufacturer) => {
+export const postManufacturer = async (
+  newManufacturer: Manufacturer,
+): Promise<Manufacturer> => {
   const { data } = await restApi.post('/manufacturers', newManufacturer)
 
   return data
 }
 
 // PUT
-export const putManufacturer = async (newManufacturer: Manufacturer) => {
+export const putManufacturer = async (
+  newManufacturer: Manufacturer,
+): Promise<Manufacturer> => {
   const { data } = await restApi.put(
     `/manufacturers/${newManufacturer.manufacturerId}`,
     newManufacturer,
@@ -35,14 +55,14 @@ export const putManufacturer = async (newManufacturer: Manufacturer) => {
 }
 
 // DELETE
-export const deleteManufacturer = async (id: number) => {
-  await restApi.delete(`/manufacturers/${id}`)
+export const deleteManufacturer = async (id: number): Promise<Manufacturer> => {
+  const { data } = await restApi.delete(`/manufacturers/${id}`)
 
-  return id
+  return data
 }
 
 // GET (all)
-export const getAllManufacturer = async () => {
+export const getAllManufacturer = async (): Promise<Manufacturers> => {
   const { data } = await restApi.get('/manufacturers')
 
   return data

@@ -1,8 +1,8 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import { type Manufacturer, defaultManufacturer } from '#/api/interfaces'
+import { defaultManufacturer } from '#/api/interfaces'
 import { postManufacturer } from '#/api/rest'
 import { ManufacturerFields } from './fields'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
 export function Create() {
