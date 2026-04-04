@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { type Manufacturer, type Manufacturers } from '#/api/interfaces'
+import type { Manufacturer, Manufacturers } from '#/api/interfaces'
 
 // Effective React Query Keys
 // https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories

@@ -1,5 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { type Manufacturer } from '#/api/interfaces'
 import {
   getManufacturer,
   putManufacturer,
@@ -7,7 +6,7 @@ import {
 } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 
 export function Edit({ id: manufacturerId }: { id: number }) {
   const queryClient = useQueryClient()
@@ -18,28 +17,35 @@ export function Edit({ id: manufacturerId }: { id: number }) {
     queryFn: () => getManufacturer(manufacturerId),
   })
 
-  if (isPending) return <span>Loading...</span>
-  if (error) return <span>An error has occurred.</span>
-
   // Use a mutation to handle the 'PUT' request.
   const mutation = useMutation({
     mutationFn: putManufacturer,
     mutationKey: manufacturerQueryKeys.detail(manufacturerId),
 
     onSuccess: () => {
+      const navigate = useNavigate()
+      navigate({
+        to: '/admin/manufacturers',
+      })
+    },
+
+    onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: manufacturerQueryKeys.detail(manufacturerId),
       })
     },
   })
 
-  const handleSubmit = () => {
-    mutation.mutate({
+  const handleSubmit = async () => {
+    await mutation.mutateAsync({
       manufacturerId: manufacturerId,
       manufacturerName: 'SHaartvark',
       manufacturerUrl: 'https://www.hard.com',
     })
   }
+
+  if (isPending) return <span>Loading...</span>
+  if (error) return <span>An error has occurred.</span>
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { defaultManufacturer } from '#/api/interfaces'
 import { postManufacturer, manufacturerQueryKeys } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 
 export function Create() {
   const queryClient = useQueryClient()
@@ -11,15 +11,24 @@ export function Create() {
   // Use a mutation to handle the 'POST' request.
   const mutation = useMutation({
     mutationFn: postManufacturer,
-    mutationKey:  manufacturerQueryKeys.all,
+    mutationKey: manufacturerQueryKeys.all,
 
     onSuccess: () => {
+      console.log('success')
+      const navigate = useNavigate()
+      navigate({
+        to: '/admin/manufacturers',
+      })
+    },
+
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
+      console.log('settled')
     },
   })
 
-  const handleSubmit = () => {
-    mutation.mutate({
+  const handleSubmit = async () => {
+    await mutation.mutateAsync({
       manufacturerName: 'The New Guys',
       manufacturerUrl: 'http://example.com',
     })

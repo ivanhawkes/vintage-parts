@@ -4,24 +4,17 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
 import type { Manufacturer } from '#/api/interfaces'
 import { Button } from '@/components/ui/button'
-import { Link, useParams } from '@tanstack/react-router'
-import { Router, useNavigate } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Route } from '#/routes/admin/manufacturers/create'
 
 export const columns: ColumnDef<Manufacturer>[] = [
-  // {
-  //   accessorKey: 'manufacturerId',
-  //   header: 'Id',
-  // },
   {
     accessorKey: 'manufacturerName',
     header: ({ column }) => {
@@ -71,17 +64,17 @@ export const columns: ColumnDef<Manufacturer>[] = [
       const navigate = useNavigate()
 
       const handleClickEdit = () => {
-        // navigate({
-        //   to: '/admin/manufacturers/$manufacturerId/edit',
-        //   params: { manufacturerId: `${m.manufacturerId}` },
-        // })
+        navigate({
+          to: '/admin/manufacturers/$manufacturerId/edit',
+          params: { manufacturerId: `${m.manufacturerId}` },
+        })
       }
 
       const handleClickDelete = () => {
-        // navigate({
-        //   to: '/admin/manufacturers/$manufacturerId/delete',
-        //   params: { manufacturerId: `${m.manufacturerId}` },
-        // })
+        navigate({
+          to: '/admin/manufacturers/$manufacturerId/delete',
+          params: { manufacturerId: `${m.manufacturerId}` },
+        })
       }
 
       const handleClickView = () => {

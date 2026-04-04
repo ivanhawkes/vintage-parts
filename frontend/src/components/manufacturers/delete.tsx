@@ -1,9 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { type Manufacturer } from '#/api/interfaces'
-import { getManufacturer, deleteManufacturer, manufacturerQueryKeys } from '#/api/rest'
+import {
+  getManufacturer,
+  deleteManufacturer,
+  manufacturerQueryKeys,
+} from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 
 export function Delete({ id: manufacturerId }: { id: number }) {
   const queryClient = useQueryClient()
@@ -14,22 +17,32 @@ export function Delete({ id: manufacturerId }: { id: number }) {
     queryFn: () => getManufacturer(manufacturerId),
   })
 
-  if (isPending) return <span>Loading...</span>
-  if (error) return <span>An error has occurred.</span>
-
   // Use a mutation to handle the 'DELETE' request.
   const deleteMutation = useMutation({
     mutationFn: deleteManufacturer,
     mutationKey: manufacturerQueryKeys.detail(manufacturerId),
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: manufacturerQueryKeys.detail(manufacturerId) })
+      const navigate = useNavigate()
+      navigate({
+        to: '/admin/manufacturers',
+      })
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: manufacturerQueryKeys.detail(manufacturerId),
+      })
+      console.log('settled')
     },
   })
 
-  const handleSubmit = (id: number) => {
-    deleteMutation.mutate(id)
+  const handleSubmit = async (id: number) => {
+    await deleteMutation.mutateAsync(id)
   }
+
+  if (isPending) return <span>Loading...</span>
+  if (error) return <span>An error has occurred.</span>
 
   return (
     <div>

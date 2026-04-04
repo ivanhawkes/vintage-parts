@@ -1,20 +1,22 @@
 'use client'
 
 import * as React from 'react'
-
 import { Input } from '@/components/ui/input'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+} from '@tanstack/react-table'
+
 import {
-  type ColumnDef,
-  type ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  type SortingState,
   useReactTable,
 } from '@tanstack/react-table'
 
@@ -77,7 +79,7 @@ export function DataTable<TData, TValue>({
     },
   })
 
-  var pageList: number[] = []
+  const pageList: number[] = []
   for (let i = 1; i <= table.getPageCount(); i++) {
     pageList[i] = i
   }
@@ -88,8 +90,7 @@ export function DataTable<TData, TValue>({
         <Input
           placeholder="Filter by name..."
           value={
-            (table.getColumn('manufacturerName')?.getFilterValue() as string) ??
-            ''
+            (table.getColumn('manufacturerName')?.getFilterValue() as string) 
           }
           onChange={(event) =>
             table
@@ -129,7 +130,7 @@ export function DataTable<TData, TValue>({
           </TableHeader>
 
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}

@@ -5,5 +5,5 @@ export const Route = createFileRoute('/storage-bins')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/storage-bins"!</div>
+  return <div>Hello storage-bins!</div>
 }
