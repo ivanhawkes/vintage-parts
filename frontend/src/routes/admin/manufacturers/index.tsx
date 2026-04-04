@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { List } from '#/components/manufacturers/list'
+import { List } from '#/components/manufacturers'
 
-export const Route = createFileRoute('/admin/manufacturers/list')({
+export const Route = createFileRoute('/admin/manufacturers/')({
   component: RouteComponent,
 })
 

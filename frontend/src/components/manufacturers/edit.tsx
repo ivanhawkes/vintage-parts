@@ -62,7 +62,7 @@ export function Edit({ id }: { id: number }) {
       <ManufacturerFields m={data} isDisabled={false}></ManufacturerFields>
       <div className="container mx-auto py-2">
         <Link
-          to="/admin/manufacturers/list"
+          to="/admin/manufacturers"
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >

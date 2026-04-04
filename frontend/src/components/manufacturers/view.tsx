@@ -6,7 +6,7 @@ import { Link } from '@tanstack/react-router'
 
 export function View({ id }: { id: number }) {
   const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['manufacturer'],
+    queryKey: ['manufacturer-view'],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
   })
@@ -19,14 +19,14 @@ export function View({ id }: { id: number }) {
       <ManufacturerFields m={data} isDisabled={true}></ManufacturerFields>
       <div className="container mx-auto">
         <Link
-          to="/admin/manufacturers/list"
+          to="/admin/manufacturers"
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Cancel
         </Link>
         <Link
-          to="/admin/manufacturers/list"
+          to={'/admin/manufacturers/' + id + '/delete'}
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >

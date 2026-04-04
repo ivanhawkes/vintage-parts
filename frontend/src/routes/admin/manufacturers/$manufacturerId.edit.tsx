@@ -8,5 +8,5 @@ export const Route = createFileRoute('/admin/manufacturers/$manufacturerId/edit'
 function RouteComponent() {
   const { manufacturerId } = Route.useParams()
 
-  return <Edit id={Number.parseInt(manufacturerId)}></Edit>
+  return <Edit id={ Number.parseInt(manufacturerId) }></Edit>
 }

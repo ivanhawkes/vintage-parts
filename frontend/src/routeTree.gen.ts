@@ -21,7 +21,7 @@ import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminUsersIndexRouteImport } from './routes/admin/users/index'
 import { Route as AdminPartsIndexRouteImport } from './routes/admin/parts/index'
 import { Route as AdminPartTypesIndexRouteImport } from './routes/admin/part-types/index'
-import { Route as AdminManufacturersListRouteImport } from './routes/admin/manufacturers/list'
+import { Route as AdminManufacturersIndexRouteImport } from './routes/admin/manufacturers/index'
 import { Route as AdminManufacturersCreateRouteImport } from './routes/admin/manufacturers/create'
 import { Route as AdminManufacturersManufacturerIdViewRouteImport } from './routes/admin/manufacturers/$manufacturerId.view'
 import { Route as AdminManufacturersManufacturerIdEditRouteImport } from './routes/admin/manufacturers/$manufacturerId.edit'
@@ -87,9 +87,9 @@ const AdminPartTypesIndexRoute = AdminPartTypesIndexRouteImport.update({
   path: '/admin/part-types/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminManufacturersListRoute = AdminManufacturersListRouteImport.update({
-  id: '/admin/manufacturers/list',
-  path: '/admin/manufacturers/list',
+const AdminManufacturersIndexRoute = AdminManufacturersIndexRouteImport.update({
+  id: '/admin/manufacturers/',
+  path: '/admin/manufacturers/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminManufacturersCreateRoute =
@@ -128,7 +128,7 @@ export interface FileRoutesByFullPath {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers/': typeof AdminManufacturersIndexRoute
   '/admin/part-types/': typeof AdminPartTypesIndexRoute
   '/admin/parts/': typeof AdminPartsIndexRoute
   '/admin/users/': typeof AdminUsersIndexRoute
@@ -147,7 +147,7 @@ export interface FileRoutesByTo {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers': typeof AdminManufacturersIndexRoute
   '/admin/part-types': typeof AdminPartTypesIndexRoute
   '/admin/parts': typeof AdminPartsIndexRoute
   '/admin/users': typeof AdminUsersIndexRoute
@@ -167,7 +167,7 @@ export interface FileRoutesById {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/manufacturers/create': typeof AdminManufacturersCreateRoute
-  '/admin/manufacturers/list': typeof AdminManufacturersListRoute
+  '/admin/manufacturers/': typeof AdminManufacturersIndexRoute
   '/admin/part-types/': typeof AdminPartTypesIndexRoute
   '/admin/parts/': typeof AdminPartsIndexRoute
   '/admin/users/': typeof AdminUsersIndexRoute
@@ -188,7 +188,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/list'
+    | '/admin/manufacturers/'
     | '/admin/part-types/'
     | '/admin/parts/'
     | '/admin/users/'
@@ -207,7 +207,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/list'
+    | '/admin/manufacturers'
     | '/admin/part-types'
     | '/admin/parts'
     | '/admin/users'
@@ -226,7 +226,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/'
     | '/admin/manufacturers/create'
-    | '/admin/manufacturers/list'
+    | '/admin/manufacturers/'
     | '/admin/part-types/'
     | '/admin/parts/'
     | '/admin/users/'
@@ -246,7 +246,7 @@ export interface RootRouteChildren {
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminManufacturersCreateRoute: typeof AdminManufacturersCreateRoute
-  AdminManufacturersListRoute: typeof AdminManufacturersListRoute
+  AdminManufacturersIndexRoute: typeof AdminManufacturersIndexRoute
   AdminPartTypesIndexRoute: typeof AdminPartTypesIndexRoute
   AdminPartsIndexRoute: typeof AdminPartsIndexRoute
   AdminUsersIndexRoute: typeof AdminUsersIndexRoute
@@ -341,11 +341,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPartTypesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/manufacturers/list': {
-      id: '/admin/manufacturers/list'
-      path: '/admin/manufacturers/list'
-      fullPath: '/admin/manufacturers/list'
-      preLoaderRoute: typeof AdminManufacturersListRouteImport
+    '/admin/manufacturers/': {
+      id: '/admin/manufacturers/'
+      path: '/admin/manufacturers'
+      fullPath: '/admin/manufacturers/'
+      preLoaderRoute: typeof AdminManufacturersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/manufacturers/create': {
@@ -390,7 +390,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSettingsRoute: AdminSettingsRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminManufacturersCreateRoute: AdminManufacturersCreateRoute,
-  AdminManufacturersListRoute: AdminManufacturersListRoute,
+  AdminManufacturersIndexRoute: AdminManufacturersIndexRoute,
   AdminPartTypesIndexRoute: AdminPartTypesIndexRoute,
   AdminPartsIndexRoute: AdminPartsIndexRoute,
   AdminUsersIndexRoute: AdminUsersIndexRoute,

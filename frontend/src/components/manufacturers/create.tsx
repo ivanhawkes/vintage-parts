@@ -3,7 +3,7 @@ import { type Manufacturer, defaultManufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
-import axios from 'axios'
+import axios from 'axios';
 
 export const postManufacturerFn = axios.create({
   baseURL: 'http://localhost:8080/manufacturers',
@@ -56,7 +56,7 @@ export function Create() {
       ></ManufacturerFields>
       <div className="container mx-auto py-2">
         <Link
-          to="/admin/manufacturers/list"
+          to="/admin/manufacturers"
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >

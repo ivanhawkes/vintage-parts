@@ -5,7 +5,7 @@ import { DataTable } from './data-table'
 
 export function List() {
   const { data, isPending, error } = useQuery<Manufacturers>({
-    queryKey: ['manufacturer'],
+    queryKey: ['manufacturer-list'],
     queryFn: () =>
       fetch('http://localhost:8080/manufacturers').then((r) => r.json()),
   })
