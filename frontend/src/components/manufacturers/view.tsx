@@ -5,11 +5,11 @@ import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
-export function View({ id }: { id: number }) {
+export function View({ id: manufacturerId }: { id: number }) {
   // GET
   const { data, isPending, error } = useQuery({
-    queryKey: manufacturerQueryKeys.detail(id),
-    queryFn: () => getManufacturer(id),
+    queryKey: manufacturerQueryKeys.detail(manufacturerId),
+    queryFn: () => getManufacturer(manufacturerId),
   })
 
   if (isPending) return <span>Loading...</span>
@@ -27,14 +27,14 @@ export function View({ id }: { id: number }) {
           Cancel
         </Link>
         <Link
-          to={'/admin/manufacturers/' + id + '/delete'}
+          to={'/admin/manufacturers/' + manufacturerId + '/delete'}
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
           Delete
         </Link>
         <Link
-          to={'/admin/manufacturers/' + id + '/edit'}
+          to={'/admin/manufacturers/' + manufacturerId + '/edit'}
           className={buttonVariants({ variant: 'outline' })}
           activeProps={{ className: 'nav-link is-active' }}
         >
