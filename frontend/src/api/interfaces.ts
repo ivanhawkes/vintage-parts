@@ -1,14 +1,3 @@
-import axios from 'axios'
-
-export const restApi = axios.create({
-  // TODO: Needs to be an .env variable.
-  baseURL: 'http://localhost:8080',
-  timeout: 2000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-
 // Manufacturers
 export interface Manufacturer {
   manufacturerId?: number

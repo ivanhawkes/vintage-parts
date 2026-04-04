@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { restApi, type Manufacturer } from '#/api/interfaces'
+import { type Manufacturer } from '#/api/interfaces'
+import { deleteManufacturer } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
@@ -7,22 +8,16 @@ import { Link } from '@tanstack/react-router'
 export function Delete({ id: manufacturerId }: { id: number }) {
   const queryClient = useQueryClient()
 
-  // Create a DELETE function to access the REST API.
-  const deleteManufacturer = async (id: number) => {
-    await restApi.delete(`/manufacturers/${id}`)
-
-    return id
-  }
-
   // Use a mutation to handle the 'DELETE' request.
   const deleteMutation = useMutation({
     mutationFn: deleteManufacturer,
+
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer'] })
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-delete'] })
     },
   })
 
-  const handleDelete = (id: number) => {
+  const handleSubmit = (id: number) => {
     deleteMutation.mutate(id)
   }
 
@@ -31,7 +26,7 @@ export function Delete({ id: manufacturerId }: { id: number }) {
       {/* <ManufacturerFields m={data} isDisabled={true}></ManufacturerFields> */}
       <div className="container mx-auto">
         <button
-          onClick={() => handleDelete(manufacturerId)}
+          onClick={() => handleSubmit(manufacturerId)}
           className="px-3 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition-colors"
         >
           Delete

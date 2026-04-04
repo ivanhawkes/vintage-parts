@@ -1,65 +1,33 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-// import { useNavigate } from 'react-router-dom'
-import type { restApi, Manufacturer } from '#/api/interfaces'
+import { type Manufacturer } from '#/api/interfaces'
+import { putManufacturer } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
-export function Edit({ id }: { id: number }) {
-  //   const navigate = useNavigate()
+export function Edit({ id: manufacturerId }: { id: number }) {
   const queryClient = useQueryClient()
 
-  const { data, isPending, error } = useQuery<Manufacturer>({
-    queryKey: ['manufacturer-edit', id],
-    queryFn: () =>
-      fetch('http://localhost:8080/manufacturers/' + id).then((r) => r.json()),
-  })
+  // Use a mutation to handle the 'PUT' request.
+  const mutation = useMutation({
+    mutationFn: putManufacturer,
 
-  const putManufacturer = useMutation({
-    mutationFn: (newManufacturer: Manufacturer) =>
-      fetch('http://localhost:8080/manufacturers/' + id, {
-        method: 'PUT',
-        body: JSON.stringify(newManufacturer),
-      }),
-
-    onMutate: () => {
-      console.log('Mutate')
-    },
-
-    onSuccess: (data) => {
-      console.log(data)
-      //   navigate('/')
-    },
-
-    // 3. On error - Rollback
-    onError: (error, variables, context) => {
-      // queryClient.setQueryData(['todos'], context.previousTodos)
-      // toast.error('Failed to add todo')
-    },
-
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit', id] })
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-edit'] })
     },
   })
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const newManufacturer: Manufacturer = {
-      manufacturerId: -4,
-      manufacturerName: 'Haardvark',
+  const handleSubmit = () => {
+    mutation.mutate({
+      manufacturerId: manufacturerId,
+      manufacturerName: 'SHaardvark',
       manufacturerUrl: 'https://www.hard.com',
-      description: 'Life is hard.',
-      aliases: '',
-    }
-    putManufacturer.mutate(newManufacturer)
+    })
   }
-
-  if (isPending) return <span>Loading...</span>
-  if (error) return <span>An error has occurred.</span>
 
   return (
     <div>
-      <ManufacturerFields m={data} isDisabled={false}></ManufacturerFields>
+      {/* <ManufacturerFields m={data} isDisabled={false}></ManufacturerFields> */}
       <div className="container mx-auto py-2">
         <Link
           to="/admin/manufacturers"
@@ -68,9 +36,9 @@ export function Edit({ id }: { id: number }) {
         >
           Cancel
         </Link>
-        <form onSubmit={handleSubmit}>
-          <Button type="submit">Save</Button>
-        </form>
+        <Button variant="outline" onClick={() => handleSubmit()}>
+          Save
+        </Button>
       </div>
     </div>
   )

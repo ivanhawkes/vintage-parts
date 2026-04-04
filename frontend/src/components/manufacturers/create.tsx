@@ -1,29 +1,23 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import { restApi, type Manufacturer, defaultManufacturer } from '#/api/interfaces'
+import { type Manufacturer, defaultManufacturer } from '#/api/interfaces'
+import { postManufacturer } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
-
 export function Create() {
   const queryClient = useQueryClient()
 
-  // Create a POST function to access the REST API.
-  const createManufacturer = async (newManufacturer: Manufacturer) => {
-    const { data } = await restApi.post('/manufacturers', newManufacturer)
-
-    return data
-  }
-
   // Use a mutation to handle the 'POST' request.
   const mutation = useMutation({
-    mutationFn: createManufacturer,
+    mutationFn: postManufacturer,
+
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturers'] })
+      queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
     },
   })
 
-  const handleCreate = () => {
+  const handleSubmit = () => {
     mutation.mutate({
       manufacturerName: 'The New Guys',
       manufacturerUrl: 'http://example.com',
@@ -46,7 +40,7 @@ export function Create() {
         </Link>
 
         <button
-          onClick={() => handleCreate()}
+          onClick={() => handleSubmit()}
           className="px-3 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition-colors"
         >
           Save
