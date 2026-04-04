@@ -1,52 +1,34 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import { type Manufacturer, defaultManufacturer } from '#/api/interfaces'
+import { restApi, type Manufacturer, defaultManufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
-import axios from 'axios';
 
-export const postManufacturerFn = axios.create({
-  baseURL: 'http://localhost:8080/manufacturers',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  timeout: 2000,
-})
 
 export function Create() {
   const queryClient = useQueryClient()
 
-  const newManufacturer: Manufacturer = {
-    manufacturerId: 0,
-    manufacturerName: 'Baardvark',
-    manufacturerUrl: 'https://www.bard.com',
-    description: 'He is a rad vark',
+  // Create a POST function to access the REST API.
+  const createManufacturer = async (newManufacturer: Manufacturer) => {
+    const { data } = await restApi.post('/manufacturers', newManufacturer)
+
+    return data
   }
 
-  const postManufacturer = useMutation({
-    mutationFn: () =>
-      fetch('http://localhost:8080/manufacturers', {
-        method: 'POST',
-        body: JSON.stringify(newManufacturer),
-      }),
-
-    onMutate: async () => {
-      console.log('Before')
-    },
-
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
-      console.log(data)
-    },
-
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['manufacturer-create'] })
-      console.log('Settled')
+  // Use a mutation to handle the 'POST' request.
+  const mutation = useMutation({
+    mutationFn: createManufacturer,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['manufacturers'] })
     },
   })
 
-  // function createUser(){}
-  // const postMan { isLoading, isSuccess, error, mutate } = useMutation(createUser) }
+  const handleCreate = () => {
+    mutation.mutate({
+      manufacturerName: 'The New Guys',
+      manufacturerUrl: 'http://example.com',
+    })
+  }
 
   return (
     <div>
@@ -63,7 +45,12 @@ export function Create() {
           Cancel
         </Link>
 
-        <Button onClick={() => postManufacturer.mutate()}>Save</Button>
+        <button
+          onClick={() => handleCreate()}
+          className="px-3 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition-colors"
+        >
+          Save
+        </button>
       </div>
     </div>
   )

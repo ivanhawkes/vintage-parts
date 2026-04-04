@@ -1,3 +1,14 @@
+import axios from 'axios'
+
+export const restApi = axios.create({
+  // TODO: Needs to be an .env variable.
+  baseURL: 'http://localhost:8080',
+  timeout: 2000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
 // Manufacturers
 export interface Manufacturer {
   manufacturerId?: number
@@ -209,22 +220,20 @@ export const defaultUser: User = {
 }
 
 // User parts
-export interface UserPart 
-{
-  userPartId?:number,
-  userId: number,
-  partId: number,
-  storageBinsId: number,
-  columnNumber: number,
-  rowNumber: number,
-  quantity: number,
+export interface UserPart {
+  userPartId?: number
+  userId: number
+  partId: number
+  storageBinsId: number
+  columnNumber: number
+  rowNumber: number
+  quantity: number
 }
 
-export type UserParts = UserPart []
+export type UserParts = UserPart[]
 
-export const defaultUserPart : UserPart=
-{
-  userPartId:undefined,
+export const defaultUserPart: UserPart = {
+  userPartId: undefined,
   userId: 1,
   partId: 1,
   storageBinsId: 1,

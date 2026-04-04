@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 // import { useNavigate } from 'react-router-dom'
-import type { Manufacturer } from '#/api/interfaces'
+import type { restApi, Manufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'

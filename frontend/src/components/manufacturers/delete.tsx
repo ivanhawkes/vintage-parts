@@ -1,29 +1,20 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import type { Manufacturer } from '#/api/interfaces'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { restApi, type Manufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
-import axios from 'axios'
 
 export function Delete({ id: manufacturerId }: { id: number }) {
-  const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    timeout: 5000,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  const queryClient = useQueryClient()
 
-  // A reusable function for deleting an item
+  // Create a DELETE function to access the REST API.
   const deleteManufacturer = async (id: number) => {
-    await api.delete(`/manufacturers/${id}`)
+    await restApi.delete(`/manufacturers/${id}`)
 
     return id
   }
 
-  const queryClient = useQueryClient()
-
-  // Use a mutation to handle the 'DELETE' request
+  // Use a mutation to handle the 'DELETE' request.
   const deleteMutation = useMutation({
     mutationFn: deleteManufacturer,
     onSuccess: () => {
