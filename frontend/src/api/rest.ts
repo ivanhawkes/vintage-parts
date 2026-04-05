@@ -5,18 +5,19 @@ import type { Manufacturer, Manufacturers } from '#/api/interfaces'
 // https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
 // https://tkdodo.eu/blog/leveraging-the-query-function-context#query-key-factories
 
-export const manufacturerQueryKeys = {
+export const manufacturerQK = {
   all: ['manufacturer'],
-  lists: () => [...manufacturerQueryKeys.all, 'list'] as const,
+  lists: () => [...manufacturerQK.all, 'list'] as const,
   list: (filters: string) =>
-    [...manufacturerQueryKeys.lists(), { filters }] as const,  details: () => [...manufacturerQueryKeys.all, 'detail'],
-  detail: (id: number) => [...manufacturerQueryKeys.details(), id],
+    [...manufacturerQK.lists(), { filters }] as const,
+  details: () => [...manufacturerQK.all, 'detail'],
+  detail: (id: number) => [...manufacturerQK.details(), id],
   pagination: (page: number) => [
-    ...manufacturerQueryKeys.all,
+    ...manufacturerQK.all,
     'pagination',
     page,
   ],
-  infinite: () => [...manufacturerQueryKeys.all, 'infinite'],
+  infinite: () => [...manufacturerQK.all, 'infinite'],
 }
 
 export const restApi = axios.create({

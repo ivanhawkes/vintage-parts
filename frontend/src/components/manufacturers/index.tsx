@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getAllManufacturer, manufacturerQueryKeys } from '#/api/rest'
+import { getAllManufacturer, manufacturerQK } from '#/api/rest'
 import type { Manufacturers } from '#/api/interfaces'
 import { columns } from './columns'
 import { DataTable } from './data-table'
@@ -7,7 +7,7 @@ import { DataTable } from './data-table'
 export function List() {
   // GET
   const { data, isPending, error } = useQuery({
-    queryKey: manufacturerQueryKeys.lists(),
+    queryKey: manufacturerQK.lists(),
     queryFn: () => getAllManufacturer(),
   })
 

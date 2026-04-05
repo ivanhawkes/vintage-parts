@@ -6,6 +6,8 @@ import {
   FieldSet,
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
+import { FieldInfo } from './field-info.tsx'
+import { cn } from '#/lib/utils'
 
 export function ManufacturerFields({
   m,
@@ -16,7 +18,11 @@ export function ManufacturerFields({
 }) {
   return (
     <div className="container mx-auto py-2">
-      <FieldSet>
+
+
+
+
+      {/* <FieldSet>
         <Field>
           <FieldLabel htmlFor="name">
             Name: <span className="text-destructive">*</span>
@@ -62,7 +68,7 @@ export function ManufacturerFields({
           />
           <FieldDescription>A short description.</FieldDescription>
         </Field>
-      </FieldSet>
+      </FieldSet> */}
     </div>
   )
 }

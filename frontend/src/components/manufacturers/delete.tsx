@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   getManufacturer,
   deleteManufacturer,
-  manufacturerQueryKeys,
+  manufacturerQK,
 } from '#/api/rest'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
@@ -13,14 +13,14 @@ export function Delete({ id: manufacturerId }: { id: number }) {
 
   // GET
   const { data, isPending, error } = useQuery({
-    queryKey: manufacturerQueryKeys.detail(manufacturerId),
+    queryKey: manufacturerQK.detail(manufacturerId),
     queryFn: () => getManufacturer(manufacturerId),
   })
 
   // Use a mutation to handle the 'DELETE' request.
   const deleteMutation = useMutation({
     mutationFn: deleteManufacturer,
-    mutationKey: manufacturerQueryKeys.detail(manufacturerId),
+    mutationKey: manufacturerQK.detail(manufacturerId),
 
     onSuccess: () => {
       const navigate = useNavigate()
@@ -31,7 +31,7 @@ export function Delete({ id: manufacturerId }: { id: number }) {
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: manufacturerQueryKeys.detail(manufacturerId),
+        queryKey: manufacturerQK.detail(manufacturerId),
       })
       console.log('settled')
     },

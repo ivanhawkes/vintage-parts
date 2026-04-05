@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getManufacturer, manufacturerQueryKeys } from '#/api/rest'
+import { getManufacturer, manufacturerQK } from '#/api/rest'
 import type { Manufacturer } from '#/api/interfaces'
 import { ManufacturerFields } from './fields'
 import { buttonVariants } from '@/components/ui/button'
@@ -8,7 +8,7 @@ import { Link } from '@tanstack/react-router'
 export function View({ id: manufacturerId }: { id: number }) {
   // GET
   const { data, isPending, error } = useQuery({
-    queryKey: manufacturerQueryKeys.detail(manufacturerId),
+    queryKey: manufacturerQK.detail(manufacturerId),
     queryFn: () => getManufacturer(manufacturerId),
   })
 
